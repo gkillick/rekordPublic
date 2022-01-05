@@ -1,0 +1,390 @@
+#plan_header{
+	width: 100%;
+	height: 35px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position:relative;
+}
+.day_1{
+	background:#269af3;
+	color:white;
+	border-radius:4px;
+	padding:7px;
+	display:inline-block;
+	font-size:14px;
+	transition: opacity .3s;
+	cursor:pointer;
+
+}
+
+.edit_container{
+	display:flex;
+	width:100%;
+	flex-direction: column;
+}
+.cal_scroll {
+flex: 1;
+overflow: scroll;
+position:relative;
+}
+.plan_month{
+	position:absolute;
+	right:0px;
+	z-index:999;
+	border-radius:10px;
+	font-weight:500;
+	color:black;
+	line-height:35px;
+	letter-spacing:2px;
+	display:inline;
+	font-size:22px;
+}
+.cal_scroll{
+
+}
+.plan_grid{
+	table-layout: fixed;
+	position:relative;
+	width:100%;
+	padding:0px;
+	padding-bottom:2px;
+}
+.plan_title_grid_container{
+	position:relative;
+	width:100%;
+	height:35px;
+	padding-top:10px;
+	padding-bottom:5px;
+}
+#plan_grid_scroll{
+	overflow-y:visible;
+	width:100%;       /* this line and the plan grid width adjusted to remove scrollbar*/
+	overflow-x:visible;
+}
+
+.plan_title_grid{
+	position:absolute;
+	right:0px;
+	z-index:999;
+	padding:10px;
+	border-radius:10px;
+	font-weight:bold;
+	color:black;
+	font-size:12px;
+	letter-spacing:2px;
+	background:#f4f4f4;
+	display:inline;
+
+}
+#calendar_navigation{
+	display:inline-block;
+}
+#calendar_arrows{
+	display:hidden;
+	opacity:0;
+
+}
+.grey_circle{
+	display:inline-block;
+	background:#f4f4f4;
+	border-radius:50%;
+	width:15px;
+	height:15px;
+	text-align:center;
+	color:black;
+}
+
+.grey_arrow_link{
+	color:#999999 !important;
+	opacity:0;
+	margin-right:2px;
+	margin-left:2px;
+
+}
+.small_plan_title_grid{
+	text-transform:uppercase;
+	position:absolute;
+	height:16px;
+	line-height:16px;
+	top:5px;
+	right:-6px;
+	padding-left:3px;
+	padding-right:3px;
+	border-radius:10px;
+	color:black;
+	font-size:7px;
+	letter-spacing:1px;
+	background:#f4f4f4;
+	display:none;
+	border:1px solid #e6e6e6;
+
+}
+.small_plan_title_grid span{
+	cursor:pointer;
+	float:right;
+	padding-left:4px;
+	font-size:9px;
+	color:#999999;
+	text-decoration:none;
+	font-weight:bold;
+}
+.small_plan_title_grid a:hover{
+	color:black;
+}
+
+.plan_grid th{
+	text-align:right;
+	padding:0px;
+	padding-right:1px;
+
+
+}
+.week_days_grid th{
+	padding:0px;
+
+}
+.grid_days td{
+	padding:0px;
+	padding:0px;
+	border-top:1px solid #fcfcfc;
+	border-right:1px solid #fcfcfc;
+	vertical-align:top;
+}
+.grid_cell{
+	min-height:100px;
+
+}
+.week_days_grid{
+	border:none;
+}
+.number_plan_grid{
+	font-size:11px;
+	font-weight:normal;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+	width:100%;
+	text-align:right;
+}
+.total_grid{
+	border-right:none!important;
+	text-align:center;
+	color:#2d2d2d;
+}
+.outer_total{
+	display: table;
+	width:100%;
+	height:95px;
+
+}
+.inner_total{
+	display:table-cell;
+	vertical-align:middle;
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing:3px;
+
+}
+.cell_padding{
+	padding:2px;
+}
+
+.close_plan{
+	color:#999999;
+	text-decoration:none;
+}
+.close_plan:hover{
+	color:black;
+
+}
+.plan_list_bars{
+	display:none;
+
+
+}
+.plan_bar_container{
+	width:27px;
+	height:5px;
+	margin-bottom:3px;
+
+}
+.plan_bar_container:last-of-type{
+	width:27px;
+	margin-bottom:0px
+}
+.big_plan_bar{
+	float:left;
+	width:20px;
+	height:5px;
+	background:black;
+}
+.small_plan_bar {
+	width:5px;
+	height:5px;
+	background:black;
+	float:right;
+
+}
+
+#edit_plan_container{
+	width:100%;
+	display:flex;
+}
+.plan_click_container{
+
+}
+.workout_list {
+	list-style:none;
+	padding:0;
+	margin:0;
+	margin-top:2px;
+}
+.workout_list li{
+	cursor:pointer;
+	margin-left:2px;
+	margin-right:2px;
+	font-size:12px;
+	/*border:1px solid #5bb8f3;*/
+	/*background:#60c1ff;*/
+	color:white;
+	border-radius:10px;
+	padding-top:4px;
+	padding-bottom:4px;
+	text-align:center;
+	margin-bottom:3px;
+
+	position:relative;
+}
+.blue_gradient{
+	background-size: 10px 800px;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #87DFFD),
+		color-stop(1, #0684D8)
+	);
+	background-image: -o-linear-gradient(top, #87DFFD 0%, #0684D8 100%);
+	background-image: -moz-linear-gradient(top, #87DFFD 0%, #0684D8 100%);
+	background-image: -webkit-linear-gradient(top, #87DFFD 0%, #0684D8 100%);
+	background-image: -ms-linear-gradient(top, #87DFFD 0%, #0684D8 100%);
+	background-image: linear-gradient(to top, #87DFFD 0%, #0684D8 100%);
+}
+.effort_gradient{
+
+	background-size: 10px 800px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#46db43+0,52caf9+26,51aff7+63,5d91ea+83,8170ef+100 */
+	background-image: #46db43; /* Old browsers */
+	background-image: -moz-linear-gradient(top,  #46db43 0%, #52caf9 26%, #51aff7 63%, #5d91ea 83%, #8170ef 100%); /* FF3.6+ */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#46db43), color-stop(26%,#52caf9), color-stop(63%,#51aff7), color-stop(83%,#5d91ea), color-stop(100%,#8170ef)); /* Chrome,Safari4+ */
+	background-image: -webkit-linear-gradient(top,  #46db43 0%,#52caf9 26%,#51aff7 63%,#5d91ea 83%,#8170ef 100%); /* Chrome10+,Safari5.1+ */
+	background-image: -o-linear-gradient(top,  #46db43 0%,#52caf9 26%,#51aff7 63%,#5d91ea 83%,#8170ef 100%); /* Opera 11.10+ */
+	background-image: -ms-linear-gradient(top,  #46db43 0%,#52caf9 26%,#51aff7 63%,#5d91ea 83%,#8170ef 100%); /* IE10+ */
+	background-image: linear-gradient(to bottom,  #46db43 0%,#52caf9 26%,#51aff7 63%,#5d91ea 83%,#8170ef 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#46db43', endColorstr='#8170ef',GradientType=0 ); /* IE6-9 */
+
+
+}
+.plan_small{
+}
+.box_link_grey{
+	border-radius:5px;
+	background:#f8f8f8;
+	font-weight:normal;
+	letter-spacing:2px;
+	color:#656565;
+	font-size:10px;
+	padding:5px;
+	line-height:30px;
+	text-decoration:none;
+}
+.box_link_grey:hover{
+	background:#f1f1f1;
+	color:#454545;
+
+}
+.box_link{
+	border:2px solid #464646;
+	font-weight:bold;
+	letter-spacing:3px;
+	color:#464646;
+	font-size:8px;
+	padding:5px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+.box_link:hover{
+	border-color:black;
+	color:black;
+}
+.delete_workout{
+	opacity:0;
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:2px;
+	font-size:15px;
+	height:15px;
+	line-height:15px;
+	margin: auto;
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+	-ms-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+
+.workout_fade{
+	opacity:.9;
+}
+.workout_list a{
+	color:white;
+}
+.confirm_dialog_container{
+	width:100%;
+	text-align:center;
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	z-index:99999;
+	opacity:0;
+	-webkit-transform: translateZ(0);
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-ms-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+
+}
+.confirm_dialog_container:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+.confirm_dialog{
+	display:inline-block;
+	vertical-align:middle;
+
+}
+
+.confirm_dialog_inside{
+	border-radius:7.5px;
+	padding:7px;
+	padding-right:2px;
+	color:white;
+	background:#212226;
+}
+.confirm_dialog div{
+	display:inline-block;
+
+}
+.confirm_dialog_overlay{
+	position:fixed;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+}

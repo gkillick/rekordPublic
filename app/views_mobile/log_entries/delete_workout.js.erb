@@ -1,0 +1,1 @@
+$('#c_<%= @log_entry.date.to_s %>').children('.dates_m_container').html('<%= escape_javascript(render partial: "athletes/day_title", locals: {day_date: @log_entry.date, log_entry: @log_entry}) %>')

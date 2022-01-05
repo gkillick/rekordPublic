@@ -1,0 +1,7 @@
+		<div class="date_circle_m <%= day_date == Date.today ? "today_m" : "" %>" ><span><%= (day_date).strftime("%a").upcase %></span></br><span ><%= (day_date).day %></span>
+		</div>
+
+		<% if log_entry != nil && log_entry.date == (day_date) && log_entry.workouts.size > 0 %>
+		<span class="total_time_m"><%= log_entry.workouts.size > 1 ? ("<span class='total_workouts_m'>"+log_entry.workouts.size.to_s+" </span>").html_safe : "" %><%= time_cleanup(log_entry.total_minutes/60) %><%= log_entry.total_minutes_planned != 0 ? ("<span class='slash_hours_m'> / </span><span class='planned_time_total_m'>" +time_cleanup(log_entry.total_minutes_planned/60)+"</span>").html_safe : "" %></span>
+
+		<% end %>

@@ -1,0 +1,58 @@
+.workout_drawer{
+	width:202px;
+	position:absolute;
+	background:white;
+	bottom:0px;
+	left:0px;
+	z-index:-1;
+	border: 1px solid #eaebed;
+}
+.workout_drawer div{
+	opacity:0;
+}
+.drawer_label{
+	padding:5px;
+	background:#f8f8f8;
+	width:100%;
+	text-align:center;
+}
+.custom_field_wrapper{
+	display:inline-block;
+	width:358px;
+	vertical-align:top;
+
+
+}
+.custom_field_container{
+	display:inline-block;
+	width:50%;
+	position:relative;
+}
+.custom_field_wrapper_new{
+	margin-top:10px;
+	width:100%;
+	display:inline-block;
+	position:relative;
+}
+.custom_field_container_new{
+	width:33.3333333%;
+	display:inline-block;
+	position:relative;
+}
+.custom_field_container_inside{
+	left:0px;
+	right:0px;
+	border:1px dashed #ececec;
+	background:#fdfdfd;
+	padding:20px;
+	text-align:center!important;
+}
+.no_right_border{
+	border-right:none!important;
+}
+.hidden_custom_field{
+	opacity:0;
+}
+.special_label{
+
+}

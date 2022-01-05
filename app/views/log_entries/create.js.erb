@@ -1,0 +1,17 @@
+/* replace date entry that has been changed */
+var log_id = "<%= @log_entry.id %>"
+var workout_id = "<%= @log_entry.workouts.first.id %>"
+$("#log_"+log_id+"").replaceWith("<%= escape_javascript(render :partial => 'plans/plan_cal_entry', :locals => { :entry => @log_entry } ) %>")
+if($("#log_"+log_id+"").length == 0){
+	$('#c<%= @log_entry.date.to_s %>').after("<%= escape_javascript(render :partial => 'plans/plan_cal_entry', :locals => { :entry => @log_entry } ) %>")
+}
+paint_workouts()
+$('#workout_'+workout_id).each(function(){
+	$(this).animate({
+		opacity:1
+	},500)
+})
+
+
+
+resolveTotals()

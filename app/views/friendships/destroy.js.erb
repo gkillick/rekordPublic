@@ -1,0 +1,32 @@
+
+
+<% friend_link =  link_to_add_friend("add friend", @friend_id.to_s,"add") %>
+$('#search_item_friend_<%= @friend_id.to_s %>').find('.friend_status_link').first().html('<%= friend_link %>')
+$('#friend_accepted_id_<%= @friend_id.to_s %>').fadeOut(function(){
+	$(this).remove()
+	if($('.friendship_list').first().children('li').size() == 0 ){
+		$('.friendship_list').append('<li class="no_friends">search or <a class="invite_link" href="#">invite friends</a></li>')
+		$('.no_friends').css('opacity','0')
+		$('.no_friends').animate({
+			opacity:1,
+		})
+	}
+})
+
+$('#pending_friend_id_<%= escape_javascript(@friend_id.to_s) %>').remove()
+if($('#friend_request_list').find('ul').first().children('li').size() == 0 ){
+	$('.pending_requests').remove()
+	$('#friends_search_form').removeClass('pending_request')
+	$('.friend_request_container').remove()
+}
+
+<% if @request_count > 0 %>
+	<% requests_link_pref = (@request_count.to_s + ' friend '+'request'.pluralize(@request_count)).html_safe %>
+	<% requests_link = ('<span class="main_menu_highlight">'+@request_count.to_s + '</span> Friend '+'Request'.pluralize(@request_count)).html_safe %>
+	$('.requests_link').html("<%= escape_javascript(requests_link) %>")
+	$('.inside_pending_button').html("<%= escape_javascript(requests_link_pref) %>")
+
+<% else %>
+	$('.requests_link').remove()
+<% end %>
+	

@@ -1,0 +1,38 @@
+var scroll_top = $('.dates_container_m').scrollTop()
+
+<% x = 0 %>
+<% current_date = @start_date %>
+<% 21.times do |n| %>
+<% if @entries[x] != nil && @entries[x].date == current_date %>	
+		<% entry = @entries[x] %>
+		<% x += 1 %>
+	<% else %>
+		<% entry = nil %>
+<% end %>
+<% if @direction == "up" %>
+	<% if n == 0 %>
+	$('.dates_container_m').prepend("<%= escape_javascript(render :partial => 'entry', :locals => { :entry => entry, :current_date => current_date, :athlete => @user } ) %>")
+	<% else %>
+		$('.new_date_m').last().after("<%= escape_javascript(render :partial => 'entry', :locals => { :entry => entry, :current_date => current_date, :athlete => @user } ) %>")
+	<% end %>
+<% else %>
+		$('.dates_container_m').append("<%= escape_javascript(render :partial => 'entry', :locals => { :entry => entry, :current_date => current_date, :athlete => @user } ) %>")
+<% end %>
+<% current_date += 1.day %>
+<% end %>
+var appended_height = $('.dates_m ').first().height()*$('.new_date_m').size()
+
+<% if @direction == "up" %>
+paint_dates_mobile_top()
+$('.dates_container_m').scrollTop(scroll_top+appended_height)
+<% else %>
+paint_dates_mobile_bottom()
+<% end %>
+$('.new_date_m').removeClass('new_date_m')
+$('.spin_gif_bottom').appendTo($('.dates_m').last().children('.dates_m_container').first())
+$('.spin_gif_top').appendTo($('.dates_m').first().next('.dates_m').children('.dates_m_container').first())
+
+entries_loading = false
+
+
+

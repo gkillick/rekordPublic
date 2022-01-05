@@ -1,0 +1,35 @@
+<% if @email_used %>
+	$('#user_email').val("<%= @user.email %>")
+	$('#user_email').next('.password_tip').html("email already in use")
+	
+	setTimeout(function(){
+	  $('#user_email').next('.password_tip').addClass("transparent")
+	}, 1000);
+	
+		setTimeout(function(){
+			$('#user_email').next('.password_tip').html('');
+			$('#user_email').next('.password_tip').removeClass('transparent')
+		}, 1300);
+<% end %>
+<% if @no_errors %>
+	$('.password_confirm').val('')
+	$('#save_preferences').next('.password_tip').html('<span class="confirm_saved">saved </span><span class="green icon-check-mark"></span>');
+	setTimeout(function(){
+	  $('#save_preferences').next('.password_tip').addClass("transparent")
+	}, 1000);
+	setTimeout(function(){
+		$('#save_preferences').next('.password_tip').html('&nbsp');
+	  $('#save_preferences').next('.password_tip').removeClass("transparent")
+	}, 1300);
+<% end %>
+
+<% if @password_incorrect %>
+	$('#user_password').next('.password_tip').html('passwords must be 6 characters and the same');
+	setTimeout(function(){
+	  $('#user_password').next('.password_tip').addClass("transparent")
+	}, 3000);
+	setTimeout(function(){
+		$('#user_password').next('.password_tip').html('&nbsp');
+	  $('#user_password').next('.password_tip').removeClass("transparent")
+	}, 3300);
+<% end %>

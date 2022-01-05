@@ -1,0 +1,117 @@
+[draggable] {
+user-select: none;
+}
+
+.tagging_box{
+	position:relative;
+	padding:2px 2px 2px 2px;
+	border:1px solid #ececec;
+	border-radius:3px;
+	cursor:text;
+}
+.tagging_item{
+	transition: background-color 0.3s ease;
+	text-align:center;
+	margin:2px 2px 2px 2px;
+	background:#2095f8;
+	padding:5px;
+	border-radius:3px;
+	color:white;
+	font-size:14px;
+	display:inline-block;
+	cursor:pointer;
+	position:relative;
+	
+	
+}
+.tagging_box input {
+	border:none;
+	height:26px;
+	font-size:14px;
+	padding:5px;
+	width:30px;
+}
+.tagging_item_mirror{
+	position:absolute;
+	top:-5000px;
+	left:0px;
+	padding:5px;
+	border:none;
+	height:26px;
+	font-size:14px;
+}
+.add_tag{
+	position:absolute;
+	background:#f1f9ff;
+	border:1px solid #ececec;
+	display:none;
+	font-size:14px;
+	padding:5px;
+	width:100%;
+	box-sizing: border-box;
+	left:0px;
+	color:#565656;
+}
+.li_drag{
+	background:#ececec!important;
+	color:#ececec;
+}
+.tagging_tooltip{
+	position:absolute;
+	color:white;
+	
+}
+.tagging_tooltip_body{
+	background:#525252;
+	padding:5px;
+
+}
+.taggin_triangle{
+	
+	width:0; /*set dimensions of DIV to 0 so its borders collapse and touch one 
+	another*/
+	height:0;
+	border-color: transparent transparent #525252 transparent; /*top, right, bottom, and left border*/
+	border-style: solid;
+	border-width: 5px; /*width of each border*/
+	margin: 0 auto;
+	
+}
+.tagging_circle{
+	-webkit-transform: translateZ(0);
+	opacity:0;
+	margin:5px;
+	display:inline-block;
+	height:30px;
+	width:30px;
+	cursor:pointer;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+.tagging_circle:hover{
+	opacity:.7!important;
+}
+.tagging_tooltip{
+	line-height:0px;
+}
+.delete_activity{
+	display:block;
+	padding:10px;
+	text-transform:uppercase;
+	font-size:10px;
+	text-align:center;
+	letter-spacing:1.5px;
+
+}
+.delete_activity a{
+		text-decoration:none;
+		color:#bdbdbd;
+}
+.delete_activity a:hover{
+	-webkit-transform: translateZ(0);
+	-webkit-transition: color 0.5s;
+	-moz-transition: color 0.5s;
+	transition: color 0.5s;
+	color:white;
+}

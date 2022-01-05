@@ -1,0 +1,9 @@
+$('.right_cell_content').html('')
+var date = new Date (Date.parse("<%= @date %>"))
+$('.main_content_m').toggleClass('new_workout_mobile')
+var data = "<%= escape_javascript(render :partial => 'log_entries/log_entry') %>"
+$('.right_cell_content').append("<div class='title_mobile_workout'>"+date.toString('MMMM d')+"</div><div class='workout_mobile_content'>"+data+"</div>")
+$('select').niceSelect();
+autosize($('textarea'));
+align_input_tools()
+enable_slider()

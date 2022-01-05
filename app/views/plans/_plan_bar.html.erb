@@ -1,0 +1,24 @@
+<% dates = plan.end_dates %>
+<% unless dates.first == nil %>
+<% days = (dates.last - dates.first).to_i + 1%>
+<% else %>
+<% days = 0 %>
+<% end %>
+	<%= link_to edit_plan_path(plan.id), :remote => true, class: "edit_plan_link" do |link| %>
+<div class="plan interface_medium" id="plan_id_<%= plan.id %>" data-days="<%= days %>">
+ 	<%= text_field_tag("plan_"+plan.id.to_s, plan.name, class: "plan_name", placeholder: "label..", autocomplete:"off" )%>
+	<div class="hours_fraction_plans"><div>
+	<span class="plan_hours text_dark"><%= (plan.minutes/60.0/60.0).round(2) %> <span class="hrs">hrs</span></span>
+	</div>
+	<div class="bottom_fraction text_dark">
+		<%= days %> <span class="plan_days">days</span>
+	</div>
+	</div>
+	<div class="plan_tags hrs">
+		<span id="tags_for_plan_<%= plan.id %>" class="tag_hrs">
+		<%= render "plans/tags", :plan => plan %>
+		</span>
+		<%= text_field_tag("plan_tag_"+plan.id.to_s, "click to add tags..", class: "tag_form hrs", :autocomplete => :off) %>
+	</div>
+</div>
+<% end %>

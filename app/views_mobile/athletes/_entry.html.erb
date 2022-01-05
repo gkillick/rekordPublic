@@ -1,0 +1,26 @@
+
+
+
+	<% if current_date.day == 1 %>
+	<div class="new_date_m dates_m new_month_cell_m dates_m_container" data-month="<%= I18n.t("date.month_names")[current_date.month] %>" data-date="<%= current_date.to_s %>">
+		
+		<span class="new_month_m"><%= I18n.t("date.month_names")[current_date.month] %></span></div>
+	<% end %>
+
+	<div class="dates_m new_date_m" data-month="<%= I18n.t("date.month_names")[current_date.month] %>" data-date="<%= current_date.to_s %>" id="c_<%= current_date.to_s %>">
+		<div class="dates_m_container">
+		<%= render partial: "day_title", locals: {day_date: current_date, log_entry: entry} %>
+	</div>
+		<div class="log_entry_hidden_m">
+		<% if entry != nil && entry.date == current_date %>
+
+			
+			<%= render partial: "workout_title", locals: {entry: entry, athlete_id: athlete.id, start_date: entry.date}%>
+
+		<% end %>
+			<%= link_to_new_entry_mobile(current_date.to_s, ('<div class="new_workout_m">add workout</div>').html_safe,athlete.id.to_s, current_date) %>
+			
+		</div>
+		
+		
+	</div>

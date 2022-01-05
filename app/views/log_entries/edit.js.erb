@@ -1,0 +1,15 @@
+
+entry_date = new Date (Date.parse("<%= @date %>"))
+var week = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var day = entry_date.getDay()
+var day = week[day]
+var month = entry_date.getMonth()
+var month = months[month]
+var date = entry_date.getDate()
+var year = entry_date.getFullYear()
+var workout_id = <%= @workout_id %>
+//data = <%= escape_javascript(render :partial => 'log_entries/log_entry') %>
+data = "<%= escape_javascript(render :partial => 'log_entries/log_entry') %>"
+$('.edit_container').append("<div class='modal_container'><div class='md_modal'><div class='md_title'><div class='md_title_number'>"+date+"</div><div class='md_title_container'><div class='md_title_date'>"+day+"</br>"+month+"</div></div><div class='icon-close-thick'></div><div class='save_close'>save</div></div>"+data+"</div></div><div class='md_overlay'></div>")
+format_workout_window()

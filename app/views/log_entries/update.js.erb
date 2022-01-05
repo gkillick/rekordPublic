@@ -1,0 +1,96 @@
+/* replace date entry that has been changed */
+if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+
+var log_id = "<%= @log_entry.id %>"
+var workout_id = "<%= @workout_id %>"
+<% if @workout_empty %>
+$('#workout_<%= @workout_id %>').animate({
+	opacity:0,
+}, 300, function(){
+	$(this).animate({
+		height:0,
+		padding:0,
+		border:0,
+		margin:0
+	}, 300, function(){
+		$('#workout_<%= @workout_id %>').remove()
+		resolveTotals()
+	})
+})
+$('.workout_<%= @workout_id %>').css('max-height', $('.workout_<%= @workout_id %>').height())
+setTimeout(function(){
+	$('.workout_<%= @workout_id %>').css('max-height', '0px')
+},1)
+
+setTimeout(function(){
+	$('.workout_<%= @workout_id %>').remove()
+}, 700)
+<% else %>
+
+$("#log_"+log_id+"").replaceWith("<%= escape_javascript(render :partial => 'plans/plan_cal_entry', :locals => { :entry => @log_entry } ) %>")
+if($("#log_"+log_id+"").length == 0){
+	$('#c<%= @log_entry.date.to_s %>').after("<%= escape_javascript(render :partial => 'plans/plan_cal_entry', :locals => { :entry => @log_entry } ) %>")
+}
+
+paint_workouts()
+$('#workout_'+workout_id).each(function(){
+	$(this).css('opacity', .5)
+	$(this).animate({
+		opacity:1
+	},500)
+})
+<% end %>
+<% if @position != nil %>
+	//message_875
+
+
+	if($('#message_<%= @comment.id.to_s %>').size() > 0){
+
+
+
+		//if comment is just updating text
+		if($('#message_<%= @comment.id.to_s %>').children('.comment_text').first().html() == "<%= @comment.message %>"){
+		}
+		else{
+			$('#message_<%= @comment.id.to_s %>').children('.comment_text').css('opacity', 0)
+			setTimeout(function(){
+				$('#message_<%= @comment.id.to_s %>').children('.comment_text').first().html("<%= @comment.message %>")
+				$('#message_<%= @comment.id.to_s %>').children('.comment_text').css('opacity', 1)
+			},400)
+
+		}
+	}
+
+	//if comment is not currently in list
+	else{
+	 	var date = Date.parse('<%= @log_entry.date.to_s %>')
+		console.log("<%= @entry_position %>")
+		var i = 0
+	  $('.comment').each(function(){
+						 i++
+	  	var comment_date = Date.parse($(this).data('date'))
+
+	 	 if(date == comment_date){
+
+
+			 return false;
+	 	 }
+
+	  })
+	}
+<% end %>
+<% @update_comments = false %>
+<%= render :partial => 'update_side_bar', :locals => {} %>
+<% if @plan_true %>
+<%= render :partial => 'plans/update_plan_stats', :locals => {} %>
+<% end %>
+
+
+$("#log_"+log_id+"").closest('tr').children('td').last().find('.leader_board_link').remove()
+
+
+$("#log_"+log_id+"").closest('tr').children('td').last().find('.inner_total').append("<%= escape_javascript(render :partial => 'log_entries/leader_board', :locals => {:row => 1} ) %>")
+resolveTotals()
+plan_scroll_callbacks()

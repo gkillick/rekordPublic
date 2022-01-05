@@ -1,0 +1,32 @@
+<div class="preferences_nav_content" id="preferences_profile" style="<%= 'display: none;' if @tab != "profile" %>" >
+<div class="preferences_inner_wrapper">
+
+<% inside_image = "<div class='no_profile_pic center_sports grey'>add</br>image</div>" %>
+
+<%= form_for @user, :as => :user, :url => "users/"+@user.id.to_s , :html => {:class => "preferences_form", :multipart => true}, :remote => true do |f| %>
+<div class="preferences_name_fields">
+	<%= f.label :first_name, :class => "center_sports grey" %>
+	<%= f.text_field :first_name, :class => "preferences_name" %>
+	<%= f.label :last_name, :class => "center_sports grey" %>
+	<%= f.text_field :last_name, :class => "preferences_name preferences_last_name" %><%= f.file_field :image, :id => "file-input" %>
+    <%= f.label :email, :class => "center_sports grey" %>
+    <%= f.text_field :email, :autocomplete => "off", :class => "preferences_name"  %><div class="password_tip grey"></div>
+		</br>
+		</br>
+    <%= f.label :password, "new password", :class => "center_sports grey" %>
+    <%= f.password_field :password, :autocomplete => "off", :class => "preferences_name password_confirm new_password"  %><div class="password_tip grey"></div>
+    <%= f.label :retype_new_password, :class => "center_sports grey" %>
+    <%= f.password_field :password_confirmation, :class => "preferences_name password_confirm confirm_password" %><div class="password_tip grey"></div>
+	</br>
+<%= f.submit "save", :id => "save_preferences", :class => "save" %><div class="password_tip grey">&nbsp</div>
+
+</div>
+</div>
+
+
+	
+	
+<% end %>
+
+
+

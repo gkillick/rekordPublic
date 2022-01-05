@@ -1,0 +1,31 @@
+immediate!!!!
+
+2. speed up graph quiries 
+3. mouseover for planned hours 
+4. allow to view previous years in graph
+5. auto generate start date
+
+.edit_atp_link
+
+<a href="#" class="edit_atp_link"><span class="icon-chevron-down"></span></a>
+
+
+
+
+3. friendship system 
+	- users can see 1 week training data
+	- feed displays 3 last logged workouts
+	- notifications for similar workouts 
+	- music playlist sharing 
+	- simple privacy settings 
+	
+4. comments coach
+
+5. highlight intensity workouts DONE
+
+
+bugs
+
+- when dashboard loads to fast flicker 
+
+

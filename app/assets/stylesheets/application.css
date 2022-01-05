@@ -1,0 +1,430 @@
+/*
+*= require_self
+*= require_tree .
+*= require morris
+*= require selectize
+*= require icon_font
+*/
+html {
+  overflow: -moz-scrollbars-none;
+}
+::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space */
+  background: transparent; /* optional: just make scrollbar invisible */
+}
+#side_bar {
+  color: #adadad;
+  font-size: 12px;
+}
+.app_button_option {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+50,373737+50,373737+100 */
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    #ffffff 0%,
+    #ffffff 50%,
+    #373737 50%,
+    #373737 100%
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0%, #ffffff),
+    color-stop(50%, #ffffff),
+    color-stop(50%, #373737),
+    color-stop(100%, #373737)
+  ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    left,
+    #ffffff 0%,
+    #ffffff 50%,
+    #373737 50%,
+    #373737 100%
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    left,
+    #ffffff 0%,
+    #ffffff 50%,
+    #373737 50%,
+    #373737 100%
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(
+    left,
+    #ffffff 0%,
+    #ffffff 50%,
+    #373737 50%,
+    #373737 100%
+  ); /* IE10+ */
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    #ffffff 50%,
+    #373737 50%,
+    #373737 100%
+  ); /* W3C */
+  background-size: 78px 28px;
+  background-position: 0px 0px;
+  text-align: center;
+  width: 23px;
+  border: 1px solid #dfdfdf;
+  color: #d2d2d2;
+  padding: 7px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+  right: 0;
+}
+
+.app_button_option:hover {
+  color: #adadad;
+}
+.app_option_selected {
+  background-position: 39px 0px !important;
+  border-color: #373737 !important;
+  color: white !important;
+}
+.smaller {
+  font-size: 10px;
+}
+textarea,
+pre {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+}
+
+.gradient {
+  background: #53c4c2; /* Old browsers */
+  background: -moz-linear-gradient(
+    -45deg,
+    #53c4c2 0%,
+    #71ddda 100%
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0%, #53c4c2),
+    color-stop(100%, #71ddda)
+  ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #53c4c2 0%,
+    #71ddda 100%
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    -45deg,
+    #53c4c2 0%,
+    #71ddda 100%
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg, #53c4c2 0%, #71ddda 100%); /* IE10+ */
+  background: linear-gradient(135deg, #53c4c2 0%, #71ddda 100%); /* W3C */
+}
+.up_case {
+  text-transform: uppercase;
+}
+.medium_small {
+  color: #919191;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.black {
+  color: black;
+}
+textarea {
+  overflow-x: hidden;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+#top_bar {
+  z-index: 99999;
+  text-align: center;
+  margin: 0;
+  height: 40px;
+  padding: 0;
+  padding-top: 10px;
+  padding-right: 25px;
+  padding-left: 25px;
+  border-bottom: 1px solid #e7e7e7;
+  background: white;
+}
+
+#top_bar h1 {
+  float: left;
+  margin-top: 0px;
+  padding-top: 0;
+  line-height: 0.9;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+#mid_bar {
+  margin-left: auto;
+  margin-right: auto;
+  /*max-width:1200px;
+	min-width:960px;*/
+}
+#content {
+  height: calc(100vh - 51px);
+  display: flex;
+}
+
+#menu {
+  float: right;
+  font-size: 12px;
+  margin-top: 8px;
+}
+div#menu a:link,
+div#menu a:visited,
+div#menu a:active {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  color: #999999;
+  font-weight: 700;
+  margin-left: 15px;
+}
+div#menu a:hover {
+  color: #222222;
+}
+
+.button {
+  font-weight: medium;
+  margin-right: 5px;
+  font-size: 12px;
+  border-radius: 3px;
+  color: white;
+  float: left;
+  padding: 7px;
+  background: #52c8cf;
+  cursor: pointer;
+}
+.button:hover {
+  background: #44b8bf;
+}
+.button_red {
+  background: #fc3f5e;
+  margin-right: 5px;
+  font-size: 12px;
+  border-radius: 3px;
+  color: white;
+  float: left;
+  padding: 7px;
+  cursor: pointer;
+}
+.button_red:hover {
+  background: #e53956;
+}
+
+/* border: 1px solid #f1f1f1; */
+
+.center_vertical {
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 5px;
+}
+.toggle_spacer {
+  width: 46px;
+  display: inline-block;
+}
+.toggle_box {
+  display: table;
+  font-size: 8px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  float: right;
+  clear: both;
+  margin-bottom: 5px;
+}
+
+.on_off_toggle {
+  cursor: pointer;
+  width: 44px;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: background-color 700ms linear;
+  -moz-transition: background-color 700ms linear;
+  -o-transition: background-color 700ms linear;
+  -ms-transition: background-color 700ms linear;
+  transition: background-color 200ms linear;
+  transition: background 0.4s linear;
+  -webkit-transition: background 0.4s linear;
+  -moz-transition: background 0.4s linear;
+}
+.on_off_circle {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  display: table;
+  text-align: center;
+}
+.on_off_text {
+  display: table-cell;
+  color: #dedede;
+  vertical-align: middle;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.toggle_true_circle {
+  right: 1px;
+  top: 1px;
+  height: 24px;
+  width: 24px;
+}
+.toggle_true {
+  background: #55db84;
+  height: 26px;
+  border-radius: 14px;
+}
+.toggle_false {
+  background: white;
+  border: 1px solid #eeeeee;
+  height: 24px;
+  border-radius: 13px;
+}
+.toggle_false_circle {
+  left: 0px;
+  border: 1px solid #eeeeee;
+  height: 22px;
+  width: 22px;
+}
+.transparent {
+  opacity: 0;
+}
+
+.hidden,
+.invisible {
+  display: none !important;
+}
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+}
+.interface_light {
+  background: #f4f4f4;
+}
+
+.interface_medium {
+  background: #d2d2d2;
+}
+.interface_dark {
+  background: #adadad;
+}
+.interface_teal {
+  background: #52c8cf;
+}
+.text_medium {
+  color: #adadad;
+}
+.text_dark {
+  color: #4c4c4c;
+  transition: color 0.3s ease-in-out;
+}
+.text_medium_dark {
+  color: #9b9b9b;
+}
+.main_menu_highlight {
+  color: #20d4bd;
+}
+.label_on_grey {
+  letter-spacing: 2px;
+  font-size: 12px;
+  color: #3a3e40;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.interface_button_light {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 8px;
+  letter-spacing: 1px;
+  background: #fdfdfd;
+  border: 1px solid #f4f4f4;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #bfbfbf;
+  padding: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 2px;
+  transition: all 0.2s;
+}
+.interface_button_light:hover {
+  color: #828282;
+}
+.team_average {
+  -webkit-transition: opacity 500; /* Safari */
+  transition: opacity 500;
+}
+.feel_name {
+  -webkit-transition: opacity 500; /* Safari */
+  transition: opacity 500;
+}
+
+.interface_button_light_toggle {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 8px;
+  letter-spacing: 1px;
+
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #bfbfbf;
+
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 2px;
+  transition: all 0.2s;
+}
+
+.toggle_right {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.toggle_left {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.interface_button_light_toggle_item {
+  transition: background-color 0.2s ease;
+  display: inline-block;
+  padding: 5px;
+  background: #c9c9c9;
+  color: white;
+}
+.range_selector {
+  float: right;
+  margin-right: 30px;
+}
+.selected_toggle {
+  background: #269af3;
+}
+hr {
+  height: 1px;
+  color: #e2e2e2;
+  background: #e2e2e2;
+  border: none;
+}

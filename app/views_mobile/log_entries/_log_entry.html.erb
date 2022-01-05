@@ -1,0 +1,22 @@
+<div class="workout_fields_m">
+	<%= form_for @log_entry, :remote => true,  :html => {:novalidate => "novalidate", :class => 'log_entry_form'} do |f| %>
+	<%= hidden_field_tag :calendar_date, @start_date %>
+	<%= hidden_field_tag :edit, @edit %>
+  <% if @plan != nil %>
+		<%= hidden_field_tag :plan_id, @plan.id %>
+  <% end %>
+  <%= f.hidden_field :date, :value => @date %> 
+ 	<% if @athlete != nil %>
+  <%= f.hidden_field :athlete_id, :value => @athlete.id %> 
+  <% else %>
+  <%= f.hidden_field :athlete_id, :value => nil %> 
+  <% end %>
+	<%= f.hidden_field :feel %>
+	<%= f.hidden_field :sleep_quality %>
+  <%= f.fields_for :workouts do |workout| %>
+		<% if workout.object.id == @workout.id %>
+     <div class="current_workout">		
+		<%= render "workout_fields", :f => workout %><% end %><% end %><%= f.submit "save", {:class => 'submit_mobile'} %>
+		<% end %>
+		</div>
+</div>

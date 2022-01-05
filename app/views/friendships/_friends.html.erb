@@ -1,0 +1,10 @@
+<% if @pending_friends.size > 0 %>
+	<% text_class =  "pending_request" %>
+<% else %>
+	<% text_class =  "" %>
+<% end %>
+<%= form_tag friendships_path, :method => 'get', :id => "friends_search_form", :class => text_class do %>
+ 
+    <%= text_field_tag :friends_search, params[:search],:class => "light_grey", :autocomplete => :off, :value => "search athlete or coach..", :data => {:instructions => "search athlete or coach.."} %>
+<div id="names"><%= render '/friendships/name_list' %></div>
+<% end %>

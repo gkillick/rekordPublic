@@ -1,0 +1,29 @@
+<% if @pending_friends.size > 0 %>
+<div class="pending_requests pending_button"><div class="inside_pending_button"><%= pluralize(@pending_friends.size, "friend request") %></div></div>
+<div class="friend_request_container">
+<div class="triangle_grey" ></div>
+<div id="friend_request_list">
+	<ul>
+		<% @pending_friends.each do |friend| %>
+		 <% profile_image = "<div class='inside_mini_thumb'></div>" %>
+
+		<li id="pending_friend_id_<%= friend.id.to_s %>">
+		<div class="search_item_friend">
+		<div class='mini_thumb_blank'><%= profile_image.html_safe %></div>
+		<div class="search_names">
+		<%= friend.first_name %> <%= friend.last_name %> 
+		</div>
+
+			<div class="friend_status_link">
+				<% friendship_id = @pending_requests.detect { |the_friendship| (the_friendship.user_id == friend.id)} %>
+				<%= link_to_remove_friend("remove", friend.id, "remove") %><div class="spacer"></div>
+				<%= link_to_accept_friend("accept",friendship_id,"accepted", "accept") %>
+		        
+			</div>
+		  </li>
+
+		<% end %>
+	</ul>
+</div>
+</div>
+<% end %>

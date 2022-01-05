@@ -1,0 +1,12 @@
+<div class="wrapper_admin">
+<table class="admin_table">
+	<tr>
+		<th>name</th><th>current sign in at</th><th>sign in count</th>
+	</tr>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= user.first_name + " "+ user.last_name %></td><td> <%= user.updated_at.strftime("%A, %B %d %Y") %> </td><td> <%= user.sign_in_count %> </td>
+	</tr>
+	<% end %>
+</table>
+</div>

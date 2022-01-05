@@ -1,0 +1,49 @@
+2019-05-11 18:37:44.994 EDT [18796] FATAL:  lock file "postmaster.pid" already exists
+2019-05-11 18:37:44.994 EDT [18796] HINT:  Is another postmaster (PID 18786) running in data directory "/usr/local/var/postgres"?
+2019-05-11 18:38:06.091 EDT [18800] FATAL:  lock file "postmaster.pid" already exists
+2019-05-11 18:38:06.091 EDT [18800] HINT:  Is another postmaster (PID 18786) running in data directory "/usr/local/var/postgres"?
+2019-05-11 18:38:57.563 EDT [18805] LOG:  could not bind IPv6 address "::1": Address already in use
+2019-05-11 18:38:57.563 EDT [18805] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-05-11 18:38:57.563 EDT [18805] LOG:  could not bind IPv6 address "fe80::1%lo0": Address already in use
+2019-05-11 18:38:57.563 EDT [18805] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-05-11 18:38:57.564 EDT [18805] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2019-05-11 18:38:57.564 EDT [18805] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-05-11 18:38:57.564 EDT [18805] WARNING:  could not create listen socket for "localhost"
+2019-05-11 18:38:57.564 EDT [18805] FATAL:  could not create any TCP/IP sockets
+2019-05-11 18:38:57.564 EDT [18805] LOG:  database system is shut down
+2019-05-11 18:39:10.228 EDT [18808] LOG:  could not bind IPv6 address "::1": Address already in use
+2019-05-11 18:39:10.228 EDT [18808] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-05-11 18:39:10.228 EDT [18808] LOG:  could not bind IPv6 address "fe80::1%lo0": Address already in use
+2019-05-11 18:39:10.228 EDT [18808] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-05-11 18:39:10.228 EDT [18808] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2019-05-11 18:39:10.228 EDT [18808] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-05-11 18:39:10.228 EDT [18808] WARNING:  could not create listen socket for "localhost"
+2019-05-11 18:39:10.228 EDT [18808] FATAL:  could not create any TCP/IP sockets
+2019-05-11 18:39:10.228 EDT [18808] LOG:  database system is shut down
+2019-05-11 18:39:11.604 EDT [18811] LOG:  could not bind IPv6 address "::1": Address already in use
+2019-05-11 18:39:11.604 EDT [18811] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-05-11 18:39:11.604 EDT [18811] LOG:  could not bind IPv6 address "fe80::1%lo0": Address already in use
+2019-05-11 18:39:11.604 EDT [18811] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-05-11 18:39:11.605 EDT [18811] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2019-05-11 18:39:11.605 EDT [18811] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2019-05-11 18:39:11.605 EDT [18811] WARNING:  could not create listen socket for "localhost"
+2019-05-11 18:39:11.605 EDT [18811] FATAL:  could not create any TCP/IP sockets
+2019-05-11 18:39:11.605 EDT [18811] LOG:  database system is shut down
+2019-05-11 18:41:05.840 EDT [18837] FATAL:  lock file "postmaster.pid" already exists
+2019-05-11 18:41:05.840 EDT [18837] HINT:  Is another postmaster (PID 18819) running in data directory "/usr/local/var/postgres"?
+2020-06-03 15:32:28.026 EDT [49704] FATAL:  lock file "postmaster.pid" already exists
+2020-06-03 15:32:28.026 EDT [49704] HINT:  Is another postmaster (PID 49694) running in data directory "/usr/local/var/postgres"?
+2020-06-03 15:32:46.189 EDT [49707] FATAL:  lock file "postmaster.pid" already exists
+2020-06-03 15:32:46.189 EDT [49707] HINT:  Is another postmaster (PID 49694) running in data directory "/usr/local/var/postgres"?
+2020-06-03 15:33:20.335 EDT [49712] LOG:  starting PostgreSQL 12.3 on x86_64-apple-darwin19.4.0, compiled by Apple clang version 11.0.3 (clang-1103.0.32.59), 64-bit
+2020-06-03 15:33:20.337 EDT [49712] LOG:  could not bind IPv6 address "::1": Address already in use
+2020-06-03 15:33:20.337 EDT [49712] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-06-03 15:33:20.337 EDT [49712] LOG:  could not bind IPv6 address "fe80::1%lo0": Address already in use
+2020-06-03 15:33:20.337 EDT [49712] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-06-03 15:33:20.337 EDT [49712] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2020-06-03 15:33:20.337 EDT [49712] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-06-03 15:33:20.337 EDT [49712] WARNING:  could not create listen socket for "localhost"
+2020-06-03 15:33:20.337 EDT [49712] FATAL:  could not create any TCP/IP sockets
+2020-06-03 15:33:20.337 EDT [49712] LOG:  database system is shut down
+2020-06-03 15:36:35.932 EDT [49862] FATAL:  lock file "postmaster.pid" already exists
+2020-06-03 15:36:35.932 EDT [49862] HINT:  Is another postmaster (PID 49839) running in data directory "/usr/local/var/postgres"?

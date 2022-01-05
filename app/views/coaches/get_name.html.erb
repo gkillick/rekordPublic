@@ -1,0 +1,7 @@
+<% n = 1 %>
+<% @search_names.each do |friend| %>
+  <% name = "<div class='name_square' id='square_"+n.to_s+"'>" + friend.first_name + " " + friend.last_name + "</div>"%>
+  <% request = "/log_entries/get_calendar/" + friend.id.to_s+"/"+(Time.now.at_midnight).to_s %>
+  <%= link_to(name.html_safe, request, :remote => true, "data-type" => :script, :class => "get_the_cal") %>
+  <% n += 1 %>
+<% end %>

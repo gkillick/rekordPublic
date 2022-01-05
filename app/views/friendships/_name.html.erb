@@ -1,0 +1,23 @@
+
+ <% profile_image = "<div class='inside_mini_thumb'></div>" %>
+
+<div class="search_item_friend" id="search_item_friend_<%= friend.id %>">
+<div class='mini_thumb_blank'><%= profile_image.html_safe %></div>
+<div class="search_names">
+<%= @friend.first_name %> <%= @friend.last_name %> 
+</div>
+    <% if @friendship.status == "pending" %>
+      <% if @friendship.friend_id == @user.id %>
+        <% friend_link =  link_to_accept_friend("accept friend",@friendships[x].id,"accepted", "accept") %>
+      <% else %>
+        <% friend_link = link_to_remove_friend("cancel request", @friend.id, "remove") %>
+      <% end %>
+    <% else %>
+      <% friend_link = link_to_remove_friend("remove friend", @friend.id, "remove") %>
+    <% end %>
+  <% else %>
+    <% friend_link = link_to_add_friend("add friend", @friendships[x], "add") %>
+	<div class="friend_status_link">
+	<%= friend_link %>
+	</div>
+</div>

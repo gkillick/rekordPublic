@@ -1,0 +1,19 @@
+<% if @no_plan == true %>
+$('#right_container').html('<div id="edit_plan_container"><div class= "create_plan_text"><%= link_to_new_plan("write","first_plan_link invite_link") %> your first plan..</div></div>')
+<% else %>
+$('#right_container').html('<div id="edit_plan_container"><%= j render "edit_plan" %></div>')
+
+<% end %>
+
+
+//
+
+
+//auto_size_text($('.plan_title_edit'))
+    paint_workouts()
+//$('.small_plan_title_grid').fadeIn()
+$('#right_container').fadeIn()
+<% if !@no_plan %>
+<%= render :partial => 'update_plan_stats', :locals => {} %>
+prepare_plan()
+<% end %>

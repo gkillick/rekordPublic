@@ -1,0 +1,48 @@
+
+<% if current_user.user_type == "Athlete" %>
+	
+	<% friend_hours = current_user.friend_hours(@first_day_of_cal.to_date - 1.day) %>
+	<% if friend_hours.detect { |x| x[2] == current_user.id } %>
+
+	<% if friend_hours.size > 1 %>
+		<%  position = friend_hours[friend_hours.index(friend_hours.detect { |x| x[2] == current_user.id })][3] %>
+		<% if position == 1 %>
+
+			<% ribbon_class = "gold" %>
+		<% elsif position == 2 %>
+			<% ribbon_class = "blank_ribbon" %>
+		<% elsif position == 3 %>
+			<% ribbon_class = "blank_ribbon" %>
+		<% else %>
+		  <% ribbon_class = "blank_ribbon" %>
+		<% end %>
+		<% row_number = row.to_s %>
+		<% row_number = "last" if row == @rows - 1 %>
+					<a href="#" class="leader_board_link" data-row="<%= row_number %>">
+						<div class="number_totals icon-ribbon-b <%= ribbon_class %> friend_hours" >
+												<div class="leader_board label_on_grey">
+													<table class="leader_board_table">
+														<thead>
+														<tr style="width:100%;display:block;">
+															<th style="box-sizing: border-box;">Hours</th>
+														</tr>
+													</thead>
+							
+														<% friend_hours.each do |friend| %>
+
+														<tr>
+															<td style="padding-left:15px;">
+																<%= friend_hours[friend_hours.index(friend)][3] %>
+															</td>
+															<td nowrap><%= friend[0] %></td>
+															<td style="padding-right:15px;"><%= time_cleanup(friend[1]/60) %></td>
+														</tr>
+														<% end %>
+
+													</table>
+												</div>
+											</div>
+					</a>
+					<% end %>
+					<% end %>
+					<% end %>

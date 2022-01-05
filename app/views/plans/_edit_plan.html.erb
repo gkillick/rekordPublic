@@ -1,0 +1,61 @@
+<div class="edit_container">
+	<div id="plan_header">
+		<div class="day_1 transparent">day one</div>
+		<div class="plan_month"><%= Date::MONTHNAMES[@current_month.month]+ " " + @current_month.year.to_s %></div>
+	</div>
+	<table class="plan_grid" cellspacing="0">
+		<tr class="cal_title cal_header">
+			<th>mon.</th>
+			<th>tue.</th>
+			<th>wed.</th>
+			<th>thu.</th>
+			<th>fri.</th>
+			<th>sat.</th>
+			<th>sun.</th>
+			<th>totals</th>
+		</tr>
+	</table>
+	<div class="cal_scroll">
+		<table class="plan_grid" cellspacing="0">
+		<% x = 0 %>
+		<% @rows.times do |row| %>
+		<tr class="grid_days" data-month="<%= Date::MONTHNAMES[@first_day_of_cal.month] %>">
+			<% total_planned = 0 %>
+			<% total_completed = 0 %>
+			<% 7.times do |time| %>
+			<% if @first_day_of_cal.month != @current_month.month %>
+			<% month_class = "plan_light_grey" %>
+			<% else %>
+			<% month_class = "plan_dark" %>
+			<% end %>
+
+			<td data-month-name="<%= Date::MONTHNAMES[@first_day_of_cal.month] %>" data-month="<%= Date::MONTHNAMES[@first_day_of_cal.month]+ " " + @first_day_of_cal.year.to_s %>"><div class="grid_cell grid_cell_day  <%= 'future' if @first_day_of_cal >  DateTime.now.beginning_of_day %> <%= 'today_plan' if @current_month == @first_day_of_cal %>" id="g<%= @first_day_of_cal.to_date.to_s %>"><div class="cell_padding"><div class="number_plan_grid <%= "plan_"+Date::MONTHNAMES[@first_day_of_cal.month] %> <%= month_class %>" id="c<%= @first_day_of_cal.to_date.to_s %>"><%= link_to_new_entry_coach(@first_day_of_cal.to_date.to_s, ('<div class="grey_new_workout"><span class="add_workout_link">+</span><span class="number_class">'+@first_day_of_cal.day.to_s+'</span></div>').html_safe, 'plan_'+@plan.id.to_s, @start_date.to_date) %></div>
+				<% if @entries[x] != nil && @entries[x].date == (@first_day_of_cal.to_date)%>
+				<%= render "plans/plan_cal_entry", :entry => @entries[x], :total_planned => total_planned %>
+				<% @entries[x].workouts.each do |workout| %>
+					<% total_planned += workout.total_planned %>
+					<% total_completed += workout.total_completed %>
+
+				<% end %>
+
+				<% x += 1%>
+				<% end %>
+			</div></div></td>
+			<% @first_day_of_cal += 1.day %>
+			<% end %>
+			<td class="total_grid"><div class="grid_cell">
+				<% unless total_completed == 0 && total_planned == 0 %>
+				<div class="outer_total">
+					<div class="inner_total ">
+						<div class="number_totals"><span class="week_planned"><%= time_cleanup(total_planned/60) %></span>
+						</div>
+
+					</div>
+				</div>
+				<% end %>
+				</div></td>
+		</tr>
+		<% end %>
+	</table>
+	</div>
+</div>

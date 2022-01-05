@@ -1,0 +1,16 @@
+<% if @preferences.side_bar == true %>
+	<% side_bar_style = "left:0; "%>
+	<% right_container_style = "left:20%; width:80%;" %>
+	<% open = "side_bar_open" %>
+<% else %>
+	<% side_bar_style = "left:-20%; "%>
+	<% right_container_style = "left:0; width:100%;" %>
+	<% open = "" %>
+<% end %>
+
+
+<div id="right_container" style="<%= right_container_style %>">
+<%= render "log_entries/calendar" %>
+</div>
+
+<%= render "side_bar", :side_bar_style => side_bar_style, :open => open %>

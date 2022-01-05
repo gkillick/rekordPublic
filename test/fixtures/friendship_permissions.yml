@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  friendship_id: 1
+  user_id: 1
+  friend_id: 1
+  view_training: false
+  limited_view: false
+  edit_training: false
+
+two:
+  friendship_id: 1
+  user_id: 1
+  friend_id: 1
+  view_training: false
+  limited_view: false
+  edit_training: false

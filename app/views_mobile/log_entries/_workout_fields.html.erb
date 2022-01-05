@@ -1,0 +1,52 @@
+	<%= f.fields_for :planned_workouts do |workout_build| %>
+	   <%= workout_build.text_area :instructions, :placeholder => "instructions..", :rows => 1, :class => 'instructions_mobile' %>
+
+	<% end %>
+
+
+
+<%= hidden_field_tag :workout_id, f.object.id %>
+
+		<% unless activities_clean(@preferences.activities).include? f.object.activity_id %>
+			<% activities = activities_clean(@preferences.activities.dup) %>
+			<% activities.push(f.object.activity_id) %>
+		<% else %>
+			<% activities = activities_clean(@preferences.activities.dup) %>
+		<% end %>
+		<div class="padding_mobile_workout">
+		<%= f.select(:activity_id, activities,{}, {:class =>"custom_select activities_select_m"} ) %><div class="mobile_spacer"></div><%= f.select(:time, [['AM', '1'],['PM', "2"]], {}, {:class =>"custom_select time_of_day_select_m"} )%>
+	</div>
+
+	<% if f.object.completed_workouts.size < 1 %>
+		<% f.object.completed_workouts.build %>
+	<% end %>
+	<%= f.fields_for :completed_workouts do |workout_build| %>
+	   <%= render "completed_workout_fields", :f => workout_build, :workout_class => "Completed" %>
+		 <div class="padding_mobile_workout">
+			 <label for="total_completed">Day feel:</label>
+	 		<div class="slider_inside_container">
+			<div class="slider_margin_container">
+	 		<div class="slider"></div>
+	 		<div class="slider_percentage feel_gradient"></div>
+	  	</div>
+	 		<div class="new_circle_slider_m" data-form="#log_entry_feel" data-content=""></div>
+	 	 	</div>
+			</div>
+			<div class="padding_mobile_workout">
+			 <label for="total_completed">sleep:</label>
+	 		<div class="slider_inside_container">
+			<div class="slider_margin_container">
+	 		<div class="slider"></div>
+	 		<div class="slider_percentage feel_gradient"></div>
+	  	</div>
+	 		<div class="new_circle_slider_m" data-form="#log_entry_sleep_quality" data-content=""></div>
+	 	 	</div>
+		</div>
+		<div class="padding_mobile_workout">
+		</div>
+		 
+		 
+		 
+		 
+		 <% unless current_user.user_type == "Coach" %>
+		 <%= workout_build.text_area :summary, :placeholder => "comments..", :rows => 1, :class => 'instructions_mobile comments_mobile' %><% end %><% end %>

@@ -1,0 +1,65 @@
+<% intensity_totals = @month_stats["zone_totals_month"].dup  %>
+<% intensity_totals.shift %>
+
+<div id="side_bar" class="interface_light <%= open %>" style="<%= side_bar_style %>">
+<div class="side_bar_flex">
+	<div class="side_bar_flex_stats">
+		<div class="side_bar_block_clean " style="text-align:center;">
+		<div class="January_stats" id="side_bar_stats_label"><%= @start_date.strftime("%B") %> Stats</div>
+		<table class="zone_table">
+			<% if intensity_totals.inject(0){|sum,x| sum + x } > 0 %>
+			<% first_row_class = "active "%>
+			<% else %>
+			<% first_row_class = "" %>
+			<% end %>
+			<tr class="<%= first_row_class %>" id="intensity_first_row"><td style="width:10%"><div class="row_spacer">zone</div></td><div class="row_spacer"></div><td></td></tr>
+			<% 4.times do  |n| %>
+			<% if intensity_totals[n] == 0 %>
+			<% zone_class = "" %>
+			<% else %>
+			<% zone_class = "active" %>
+			<% end %>
+			<tr class="<%= zone_class %>" id="row_for_zone_<%= (n+2).to_s %>"><td class="zone_number" style="width:10%"><div class="row_spacer"><%= (n+2).to_s %></div></td><td class="tooltip_element" data-tooltip="<%= time_clean_seconds_text(intensity_totals[n]) %>"><div class="row_spacer" id="zone_container_<%= (n+2).to_s %>"><div class="side_zones_bar" style="width:<%= percentage_array(intensity_totals,n).to_s %>%" ></div><div class="side_zones_bar_2" style="width:<%= (100 - percentage_array(intensity_totals,n)).to_s %>%"></div></div></td></tr>
+			<% end %>
+		</table>
+		</br>
+		<table class="zone_table">
+			<tr class="active"><td style="width:10%"><div class="row_spacer">feel</div></td><td class="feel_side_bar" id="feel_change"><div class="row_spacer"><%= format_feel_trend(@month_stats["seven_day_feel"].last) %></div></td></tr>
+			<tr class="active"><td class="zone_number" id="feel_ratio" style="width:10%"><div class="row_spacer"><%= trim(@month_stats["seven_day_feel"][-2][1]).to_s %>/10</div></td><td><div class="row_spacer"><div class="side_zones_bar feel_gradient" style="width:<%= (@month_stats["seven_day_feel"][-2][1]*10).to_s %>%; background-position: 0% <%= (@month_stats["seven_day_feel"][-2][1]*10).to_s %>%;" id="feel_side_bar"></div><div class="side_zones_bar_2 " style="width:<%= (100 - @month_stats["seven_day_feel"][-2][1]*10).to_s %>%" id="sub_feel_side_bar"></div></div></td></tr>
+
+
+
+		</table>
+
+		<br/>
+		<div class="side_stat_box"><span class="bold_stat_box" id="month_hours"><%= "%g" % (((@month_stats["zone_totals_month"].inject(0){|sum,x| sum + x }/60.0/60.0).floor)).to_s %></span><div class="sub_text_stat_box">month</div></div><div class="side_stat_box"><span class="bold_stat_box" id="planned_hours"><%= @month_stats["planned_hours_month"] %></span><div class="sub_text_stat_box">month p</div></div><div class="side_stat_box"><span class="bold_stat_box" id="year_hours"><%= "%g" % (((@month_stats["total_hour_year"].inject(0){|sum,x| sum + x }/60.0/60.0)).floor).to_s %></span><div class="sub_text_stat_box">year</div></div>
+		<br /><br />
+		<% if @preferences.comments == false %>
+		<% flex_class = "comments_closed" %>
+		<% title_class = "comments_closed_title" %>
+		<% else %>
+		<% flex_class = "" %>
+		<% title_class = "" %>
+		<% end %>
+
+		<div class="calendar_only_item comments_title <%= title_class %>">recent comments</div>
+	</div>
+	</div>
+
+	<div class="calendar_only_item side_bar_flex_2 comments <%= flex_class %>">
+		<%= render 'comments', comments: @comments %>
+		</div>
+
+
+		<div id="toggle" class="toggle_light">
+			<% if open == 'side_bar_open' %>
+			<span class="icon-chevron-left"></span>
+			<% else %>
+			<span class="icon-chevron-right"></span>
+			<% end %>
+		</div>
+
+
+</div>
+
+</div>

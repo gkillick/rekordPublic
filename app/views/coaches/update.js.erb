@@ -1,0 +1,4 @@
+$('#loaderImage').css("opacity", "0")
+if($('#current_user_profile_pic').size() < 1){
+$('#loaderImage').after("<%= escape_javascript( image_tag(@user.image_url(:thumb).to_s, :id => 'current_user_profile_pic') ) %>")
+}

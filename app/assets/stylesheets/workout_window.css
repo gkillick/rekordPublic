@@ -1,0 +1,629 @@
+/* interval duration_table */
+.add_interval{
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:8px;
+	letter-spacing:1px;
+	background:#fdfdfd;
+	border:1px solid #f4f4f4;
+	border-radius:4px;
+	cursor:pointer;
+	margin-left:10px;
+	color:#bfbfbf;
+	padding:5px;
+	display:inline-block;
+	vertical-align:middle;
+	margin-top:2px;
+	transition: all 0.2s;
+}
+.add_interval:hover{
+	color:#828282;
+
+}
+.ghost_comment{
+	position:absolute;
+	opacity: 0;
+}
+.athlete_comment_messenger{
+		font-family: "Helvetica Neue", Helvetica, Arial,sans-serif;
+		font-size:11px
+}
+.md_modal .duration_table .icon-cancel-circled{
+	cursor:pointer;
+	color:#bfbfbf;
+	transition: all 0.2s;
+	height:28px;
+	line-height:28px;
+
+}
+.md_modal .duration_table .icon-cancel-circled:hover{
+	color:#9d9d9d;
+}
+
+.md_modal .duration_table .selectize-control{
+	height:24px;
+}
+.md_modal .duration_table .selectize-input{
+	width:35px!important;
+	padding:2px!important;
+	padding-left:5px!important;
+	color:#404040!important;
+	font-size:11px!important;
+	-webkit-box-sizing: border-box!important; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box!important;    /* Firefox, other Gecko */
+	box-sizing: border-box!important;         /* Opera/IE 8+ */
+	text-align:left!important;
+
+
+}
+.md_modal .duration_table .option{
+	font-size:11px!important;
+
+}
+.md_modal .selectize-input.input-active{
+	cursor:pointer!important;
+}
+.md_modal .selectize-input input{
+	display:none;
+	cursor:pointer!important;
+
+}
+.md_modal .duration_table{
+	width:100%;
+	background:#fafafa;
+	border:1px solid #f4f4f4;
+	border-radius:4px;
+	color:#808080;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	text-align:center;
+}
+.md_modal .duration_field_narrow{
+	padding:5px;
+	border: 1px solid #eaebed;
+	border-radius:4px;
+	width:30px;
+	text-align:center;
+	font-size:10px;
+	color:#404040;
+
+}
+.md_modal .multiplier{
+	padding:5px;
+	border: 1px solid #eaebed;
+	border-radius:4px;
+	text-align:center;
+}
+
+/* workout_chat */
+
+.workout_chat{
+	border-top: 1px solid #eaebed;
+	border-bottom: 1px solid #eaebed;
+	height:50px;
+}
+
+.light_grey{
+		color:#bfbfbf;
+		font-style:italic;
+}
+.comment_form_athlete{
+	margin-bottom:-3px;
+}
+.chat_input_field{
+	width:100%;
+	display:inline-block;
+	border-radius:13px;
+	border:1px solid #f2f2f2;
+	padding:5px;
+	padding-left:10px;
+	padding-right:10px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	resize:none;
+}
+.send{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size:10px;
+	margin-left:10px;
+	font-weight:bold;
+	letter-spacing:1px;
+	display:inline-block;
+	color:white;
+	height:24px;
+	border-radius:3px;
+	background:#56eacc;
+	line-height:24px;
+	padding-left:7px;
+	padding-right:7px;
+	transition: all 0.2s;
+	cursor:pointer;
+}
+.send:hover{
+	background:#57e1c5;
+}
+/* activity and day time */
+
+.activity_grid{
+	width:calc(100% - 63px);
+	display:inline-block;
+
+}
+
+.time_grid{
+	padding-left:10px;
+	width:63px;
+	display:inline-block;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+/* atach file */
+.attach_file{
+	display:none;
+	width:50%;
+	margin-left:50%;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	border:1px dashed #ececec;
+	background:#fdfdfd;
+	height:36px;
+	line-height:36px;
+	text-align:center;
+	border-radius:5px;
+	color:#bfbfbf;
+	font-size:13px;
+	transition: all 0.2s;
+	cursor:pointer;
+
+}
+.attach_file:hover{
+	color:#9d9d9d;
+	border:1px dashed #e1e1e1;
+
+}
+.comment_history_open{
+	height:93px!important;
+	border-top:1px solid #f2f2f2!important;
+}
+.comment_history{
+	height:0px;
+	border-top:1px solid white;
+	-webkit-transition: all .5s ease-out;
+	-moz-transition: all .5s ease-out;
+	-ms-transition: all .5s ease-out;
+	-o-transition: all .5s ease-out;
+	transition: all .5s ease-out;
+	padding-top:0px!important;
+	padding-bottom:0px!important;
+	padding-right:5px;
+	padding-left:5px;
+	overflow:scroll;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+}
+
+.comment_history_list{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.comment_history_list li{
+	margin:8px 0 5px 0;
+	display:flex;
+	display: -webkit-flex;
+}
+.comment_history_list li div{
+  padding:5px 10px 5px 10px;
+  border-radius:15px;
+  background:#F7F7F7;
+	color:#797979;
+  font-size:11px;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.self{
+  justify-content: flex-end;
+	-webkit-justify-content: flex-end;
+}
+.self div{
+	background:#B8FFF3!important;
+
+	/*background:#46E8D2!important; */
+}
+
+.workout_grid_cell{
+	display:inline-block;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	padding:5px;
+	vertical-align: text-top;
+}
+.w_whole{
+	width:100%;
+}
+.w_half{
+	width:50%;
+}
+.w_quarter{
+	width:25%;
+}
+.w_3_quarter{
+	width:75%;
+}
+.workout_spacer{
+	height:20px;
+
+}
+.workout_grid_container{
+	padding:10px;
+}
+.workout_grid_contianer_grey{
+	padding:10px;
+	border-top: 1px solid #eaebed;
+	background:#f4f6f5;
+}
+.select_positioning_time{
+	width:60px;
+	float:right;
+}
+.expanding_area textarea{
+	width:100%;
+	resize: none;
+	border: 1px solid #eaebed;
+	border-radius:4px;
+	padding:5px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+.md_modal label{
+	display:block;
+	margin-bottom:3px;
+}
+/*duration fields */
+.duration_field{
+	padding:10px;
+	border: 1px solid #eaebed;
+	border-radius:4px;
+	width:30px;
+	text-align:center;
+	letter-spacing:1.5px;
+	margin-bottom:15px;
+}
+
+.save {
+	border: 1px solid #eaeaea !important;
+	-webkit-border-radius: 4px !important;
+	border-radius: 4px !important;
+  	font-size: 11px !important;
+	letter-spacing:2px !important;
+	font-weight:bold;
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+	background:#F4F4F4;
+	text-transform:uppercase;
+	color:#303030;
+	padding:8px !important;
+	padding-right:18px !important;
+	padding-left:18px !important;
+	cursor:pointer;
+	transition: color .2s linear;
+    -webkit-transition: color .2s linear;
+    -moz-transition: color .2s linear;
+	transition: border .2s linear;
+    -webkit-transition: border .2s linear;
+    -moz-transition: border .2s linear;
+
+	transition: background .2s linear;
+    -webkit-transition: background .2s linear;
+    -moz-transition: background .2s linear;
+}
+.save:hover{
+	color:black;
+	border: 1px solid #dcdcdc;
+	background:#f2f2f2;
+
+}
+.day_stats {
+    /*background-image:url('/assets/cross_pattern.gif');*/
+	border-top:1px solid #ececec;
+	clear:both;
+	padding:10px;
+	padding-top:0px;
+}
+
+
+.not_current{
+	display:none;
+}
+.link_no_style{
+	text-decoration:none;
+}
+.user_short{
+	font-weight:bold;
+	font-size:9px;
+
+}
+/* code for new slider */
+
+
+.full_length_container{
+	padding-right:10px;
+	padding-left:10px;
+}
+.md_modal .slider_bar_container{
+	position:relative;
+	width:calc(100% - 10px);
+}
+.md_modal .slider_inside_container{
+	position:relative;
+	height:14px;
+	margin-bottom:10px;
+	margin-top:6px;
+}
+.md_modal .slider{
+	position:absolute;
+	width:100%;
+	top:0px;
+	height:14px;
+	border-radius:5px;
+	background:#f2f2f2;
+	margin-left:1px;
+}
+
+.md_modal .new_circle_slider{
+	position:absolute;
+	background:white;
+	top:-4px;
+	width:22px;
+	height:22px;
+	border-radius:50%;
+	border:1px solid #E6E6E6;
+	cursor:pointer;
+}
+.md_modal .slider_percentage{
+	position:absolute;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+	height:15px;
+	top:0px;
+	margin-left:1px;
+
+}
+.feel_gradient{
+	background: #ff5959; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ff5959 0%, #e047ff 52%, #07eaff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff5959), color-stop(52%,#e047ff), color-stop(100%,#07eaff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ff5959 0%,#e047ff 52%,#07eaff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ff5959 0%,#e047ff 52%,#07eaff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ff5959 0%,#e047ff 52%,#07eaff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ff5959 0%,#e047ff 52%,#07eaff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5959', endColorstr='#07eaff',GradientType=0 ); /* IE6-9 */
+
+	background-size: 10px 600px;
+	background-position:0% 0%;
+}
+.first_gradient{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#63c6ed+0,12ed75+100 */
+	background: #63c6ed; /* Old browsers */
+	background: -moz-linear-gradient(top, #63c6ed 0%, #12ed75 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #63c6ed 0%,#12ed75 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #63c6ed 0%,#12ed75 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63c6ed', endColorstr='#12ed75',GradientType=0 ); /* IE6-9 */
+	background-size: 10px 600px;
+	background-position:0% 0%;
+}
+.tooltip:after{
+    background: #333;
+    background: rgba(0,0,0,.8);
+    border-radius: 5px;
+    bottom: 31px;
+    color: #fff;
+    content: attr(data-content);
+    padding: 5px;
+    position: absolute;
+    z-index: 98;
+		text-align:center;
+		width:20px;
+		left:-4px;
+}
+.tooltip:before{
+    border: solid;
+    border-color: #333 transparent;
+    border-width: 6px 6px 0 6px;
+    bottom: 25px;
+    content: "";
+    left: 5px;
+    position: absolute;
+    z-index: 99;
+}
+.tooltiper{
+  background: #333;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  bottom: 31px;
+  color: #fff;
+  content: '';
+  padding: 5px;
+  position: absolute;
+  z-index: 98;
+	left:-5px;
+}
+.slider_container{
+	margin-bottom:5px;
+
+}
+.expanding_area pre, .expanding_area textarea{
+	line-height:1.5em;
+	width:100%;
+	font-style:normal!important;
+	font-size:12px;
+	color:#6e6e6e;
+	padding-left:15px!important;
+	padding-right:15px!important;
+	border:1px solid #eaebed!important;
+	border-top:none;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	font-family:helvetica;
+
+}
+.athlete_comments{
+	border-radius: 0px;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box;
+	    box-sizing: border-box;
+	    padding: 10px!important;
+	    line-height: 1.5em;
+	    width: 100%;
+	    font-style: normal!important;
+	    font-size: 12px;
+	    color: #6e6e6e!important;
+			background: #fdfdfd!important;
+	    padding-left: 15px!important;
+	    padding-right: 15px!important;
+	    border: 1px solid #eaebed!important;
+	    border-left:none!important;
+			border-right:none!important;
+			border-bottom:none!important;
+	    white-space: pre-wrap;
+	    word-wrap: break-word;
+	    font-family: helvetica;
+}
+.expanding_area_coach_comments textarea{
+background:#61b4af!important;
+	color:white!important;
+	border:none!important;
+}
+.expanding_area > pre {
+  opacity:0;
+}
+.expanding_area.active > pre {
+  display: block;
+  /* Hide the text; just using it for sizing */
+  visibility: hidden;
+}
+.expanding_area{
+	position:relative;
+}
+.expanding_area textarea {
+  /* Hide any scrollbars */
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Remove WebKit user-resize widget */
+  resize: none;
+}
+.expanding_area textarea{
+	width:450px!important;
+	border-radius:0px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	height: 35px;
+	padding:10px;
+
+}
+.grey_light{
+	background:#fdfdfd;
+}
+.workout_wide_grey{
+	width:100%;
+	padding:10px;
+	border:1px solid #f2f2f2;
+	border-right:none;
+	border-left:none;
+	background:#fdfdfd;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+.coach_comments{
+	font-size:12px;
+	border-top:1px solid #f2f2f2;
+	position: relative;
+	transition: all .5s ease-in-out;
+	background:white;
+	overflow:hidden;
+
+}
+.coach_comments_body{
+	padding:12px 17px 12px 17px;
+	width:100%;
+	display:inline-block;
+	color:#676767;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+
+}
+.messages_workout{
+	max-height: 224px;
+	overflow: scroll;
+}
+.workout_entry_comments{
+	overflow: hidden;
+overflow-y: scroll;
+flex: 1;
+max-height: 300px;
+padding-bottom:10px;
+}
+
+.user_comments_name{
+	vertical-align:top;
+	display:inline-block;
+	text-align:right;
+	color:#b1b1b1;
+	font-size:10px;
+}
+.light_grey_text{
+	color:#a9a9a9;
+}
+.dark_grey_text{
+	color:#6e6e6e;
+}
+.close-message{
+	opacity: 0;
+	float:right;
+	vertical-align: top;
+	font-size:15px;
+	color:#e7e7e7;
+	position:absolute;
+	right:5px;
+	top:5px;
+	transition: opacity .3s ease-in-out;
+}
+.remove_message{
+	opacity:0;
+
+}
+.coach_comment_gradient{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#06e0dc+0,53cbf1+0,60ea99+100 */
+	background: #06e0dc; /* Old browsers */
+	background: -moz-linear-gradient(top, #06e0dc 0%, #53cbf1 0%, #60ea99 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #06e0dc 0%,#53cbf1 0%,#60ea99 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #06e0dc 0%,#53cbf1 0%,#60ea99 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#06e0dc', endColorstr='#60ea99',GradientType=0 ); /* IE6-9 */
+	background-size: 10px 600px;
+}
+.expanding_area_coach_comments textarea::-webkit-input-placeholder { color:#c8ffdb; }
+.expanding_area_coach_comments textarea:-moz-placeholder { color:white; } /* FF 4-18 */
+.expanding_area_coach_comments textarea::-moz-placeholder { color:white; } /* FF 19+ */
+.expanding_area_coach_comments textarea:-ms-input-placeholder { color:white; } /* IE 10+ */
+
+.md_modal textarea:focus::-webkit-input-placeholder { color:transparent; }
+.md_modal textarea:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+.md_modal textarea:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+.md_modal textarea:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
+
+.time_respond:focus::-webkit-input-placeholder { color:transparent; }

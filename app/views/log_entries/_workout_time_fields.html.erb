@@ -1,0 +1,20 @@
+<% if f.object.zone != 1 %>
+	<% intensity_row = "intensity_row "%>
+<% else %>
+	<% intensity_row = "hidden"%>
+<% end %>
+<tr class="interval_zone_<%= f.object.zone.to_s %> <%= intensity_row %> zone_row">
+	<td><%= f.text_field :multiplier, :size => 2, :maxlength => 2, :placeholder => "0", :autocomplete => "off", :class => "multiplier time_respond" %></td>
+	<td><%= f.text_field :sub_duration, :maxlength => 6, :autocomplete => "off", :placeholder => "m:ss", :class => "duration_field_narrow sub_duration time_respond format_time" %></td>
+	<td><%= f.text_field :rest, :size => 2, :maxlength =>6,  :autocomplete => "off", :placeholder => "m:ss", :class => "format_time duration_field_narrow rest_duration time_respond" %><%= f.text_field :duration, :size => 2,  :autocomplete => "off", :class => "total_duration_interval time_respond hidden" %></td>
+	<td>
+		<% if the_zone > 1 %>
+			<%= f.select :zone, options_for_select([['2'],['3'],['4'],['5']], f.object.zone || '3'),{}, { class: "select_zone"}  %>
+		<% else %>
+			<%= f.select( :zone, [['1'],['2'],['3'],['4'],['5']], {:selected => "1"}, {:class =>"custom_select  zone_select"} ) %>
+		<% end %>
+	</td>
+	<td>
+	<%= link_to_remove_fields("hi", f) %>
+	</td>
+</tr>

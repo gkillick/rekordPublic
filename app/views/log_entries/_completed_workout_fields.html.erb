@@ -1,0 +1,39 @@
+<% if workout_class == "Completed" %>
+	<% if f.object.workout_times.size < 1 %>
+		<% f.object.workout_times.build(:zone => 1)%>
+	<% end %>
+	<% if f.object.workout_times.size == 1 %>
+ 	 <% table_visible = "hidden" %>
+	<% end %>
+<% else %>
+ 	<% if f.object.planned_workout_times.size < 1 %>
+ 		<% f.object.planned_workout_times.build(:zone => 1) %>
+ 	<% end %>
+	<% if f.object.planned_workout_times.size == 1 %>
+ 	 <% table_visible = "hidden" %>
+	<% end %>
+<%end %>
+
+<%= f.label workout_class, :class =>"center_sports grey" %>
+<%= text_field_tag "total_duration", nil, placeholder: "0:00",  maxlength: 5, class: "total_duration_field duration_field time_respond duration_completed format_time" %>
+<% if workout_class == "Completed" %>
+	<%= link_to_add_fields('add_field', f, :workout_times) %>
+<% else %>
+	<%= link_to_add_fields('add_field', f, :planned_workout_times) %>
+<% end %>
+<div class="table_animate <%= table_visible %>">
+<table class="duration_table">
+	<tr><th>sets</th><th>time</th><th>rest</th><th>zone</th></tr>
+	<% if workout_class == "Completed"%>
+		<%= f.fields_for :workout_times do |builder| %>
+	  	<% the_zone =  builder.object.zone %>
+	  <%= render 'workout_time_fields', :f => builder, :the_zone => the_zone  %>
+	<% end %>
+	<% else %>
+		<%= f.fields_for :planned_workout_times do |builder| %>
+	  	<% the_zone =  builder.object.zone %>
+	  <%= render 'workout_time_fields', :f => builder, :the_zone => the_zone  %>
+	<% end %>
+	<% end %>
+</table>
+</div>

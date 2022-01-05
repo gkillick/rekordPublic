@@ -1,0 +1,469 @@
+#left_container {
+	float:left;
+	width:0%;
+	height:100%;
+	bottom:0px;
+	color:white;
+}
+#side_bar{
+	width:20%;
+	position:absolute;
+	top:51px;
+	bottom:0px;
+	transition: left .4s;
+}
+#side_bar_content{
+	position:absolute;
+	right:0px;
+	left:0px;
+	z-index:909;
+
+}
+#search {
+	background:url('layout/search.png');
+	background-repeat:no-repeat;
+	padding-left:15px;
+	background-position:0px 3px;
+}
+#white{
+
+	background:white;
+}
+#search:hover {
+	background:url('layout/search.png');
+	background-repeat:no-repeat;
+	padding-left:15px;
+	background-position:-16px 3px;
+}
+#search_field {
+	float:right;
+
+	display:none;
+}
+#search_name {
+	margin-bottom:0px;
+	box-shadow:none;
+	border:1px solid #ECECEC;
+	padding:5px;
+	width:200px;
+	font-size:12px;
+	text-align:left;
+	position:relative;
+	border-radius:10px;
+
+}
+#names_list {
+	position:absolute;
+	background:white;
+	margin-left:10px;
+	width:195px;
+	z-index:999;
+	font-size:12px;
+	font-weight:bold;
+	letter-spacing:2px;
+
+}
+.name_square {
+	text-decoration:none;
+	padding:5px;
+	border-bottom:1px solid #ECECEC;
+	border-right:1px solid #ECECEC;
+	border-left:1px solid #ECECEC;
+	background:white;
+	z-index:9999;
+}
+.get_the_cal {
+	text-decoration:none;
+	color:#3a3e40;
+}
+
+.name_square:hover{
+	padding:5px;
+	background:#FFFEB0;
+}
+.highlighted_box {
+		background:#FFFEB0;
+}
+#side_bar_wrapper{
+	position:relative;
+}
+.relative{
+	position:relative;
+
+}
+
+#toggle {
+	cursor: hand; cursor: pointer;
+	border-top-right-radius:6px;
+	border-bottom-right-radius:6px;
+	width:16px;
+	text-align:center;
+	height:60px;
+	top: 250px;
+	right:-17px;
+	line-height:64px;
+	color:#cfcfcf;
+	position:absolute;
+	border:1px solid #d9d9d9;
+	border-left:none;
+	background:#f4f4f4;
+
+
+}
+
+
+.side_bar_button{
+	margin-top:10px;
+	top:0px;
+	text-decoration:none;
+	color:white;
+	padding:7px;
+	padding-right:10px;
+	padding-left:10px;
+	background:#373737;
+	border-radius:3px;
+	letter-spacing:1.5px;
+	font-size:10px;
+	display:inline-block;
+	margin-left:10px;
+	margin-right:10px;
+
+}
+.side_bar_button.hidden{display:none;}
+.side_bar_button:before{
+	content:'';
+	display:block;
+	clear:both;
+}
+.side_bar_button_container{
+	margin-top:10px;
+	width:100%;
+	position:relative;
+	text-align:right;
+	display:block;
+	clear:both;
+
+}
+.side_bar_option{
+	padding:10px;
+	font-size:12px;
+	margin-top:10px;
+}
+.toggle_container{
+	width:100%;
+	display:block;
+	text-align:right;
+}
+.side_bar_block{
+	margin-top:10px;
+	padding:10px;
+	position:relative;
+	height:28px;
+
+}
+.side_bar_block_clean{
+	margin-top:10px;
+	padding:10px;
+
+}
+.side_bar_block_clean_2{
+	padding:10px
+}
+.block_right{
+	right:10px;
+	position:absolute;
+}
+.block_text{
+	font-size:11px;
+	height:28px;
+	line-height:28px;
+	display:inline-block;
+}
+.search_field_side_bar{
+	-webkit-transition: all .5s;
+	-moz-transition: all 1.2s;
+	transition: all .5s;
+	height:49px;
+}
+.search_field_side_bar_closed{
+	height:0px;
+	opacity:0;
+	overflow:hidden;
+}
+.side_stat_box{
+	display:inline-block;
+	width:30%;
+
+}
+.sub_text_stat_box{
+
+}
+.bold_stat_box{
+	font-size:25px;
+	font-weight:500;
+	color:#494949;
+}
+
+
+.side_zones_bar{
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-ms-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+	top:7px;
+
+	display:inline-block;
+	background:#3bdf94;
+	height:15px;
+
+}
+.side_zones_bar_2{
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-ms-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+	top:7px;
+	display:inline-block;
+	background:#e9e9e9;
+	height:15px;
+}
+
+.zone_table{
+	border-collapse: collapse;
+	width:100%;
+
+}
+.zone_table tr, .zone_table td {
+  padding: 0;
+}
+.zone_table tr td div.row_spacer {
+  max-height: 0;
+  padding: 0 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: max-height 0.6s, padding 0.6s;
+}
+tr.active td div.row_spacer {
+  max-height: 100px;
+  padding: 5px 5px;
+  transition: max-height 0.9s, padding 0.9s;
+}
+.zone_number{
+	font-weight:500;
+		color:#494949;
+}
+.January_stats{
+
+	font-size:12px;
+	letter-spacing:2px;
+	font-weight:500;
+	width:100%;
+
+}
+.feel_side_bar{
+	text-align:right;
+	font-weight:500;
+		color:#494949;
+}
+.tooltip_container{
+	position:absolute;
+	z-index:999999999;
+}
+.tooltip_element{
+	position:relative;
+}
+.tooltip_triangle{
+
+	width:0; /*set dimensions of DIV to 0 so its borders collapse and touch one
+	another*/
+	height:0;
+	border-color: transparent transparent #5a5a5a transparent; /*top, right, bottom, and left border*/
+	border-style: solid;
+	border-width: 5px; /*width of each border*/
+	margin: 0 auto;
+
+}
+.tooltip_body{
+	font-size:11px;
+	border-radius:5px;
+	background:#5a5a5a;
+	color:white;
+	padding:10px;
+	letter-spacing:1px;
+	font-weight:bold;
+}
+.comments{
+	width:100%;
+	text-align:left;
+
+
+}
+.comments_title{
+		transition: all 0.4s;
+	cursor:pointer;
+	color:#494949;
+	font-weight:500;
+	text-align:center;
+	background:#fdfdfd;
+	padding:10px;
+	border-radius:7.5px;
+
+}
+.comments .comment{
+	cursor:pointer;
+	background:#e9e9e9;
+	color:#8a8a8a;
+	transition: all 0.4s;
+	padding:10px;
+	border-radius:7.5px;
+	margin-bottom:7px;
+
+}
+.comment_text{
+	transition: all 0.4s;
+}
+
+
+/*flexbox */
+
+.side_bar_flex{
+	display:flex;
+	height:100%;
+	flex-direction:column;
+
+
+}
+.side_bar_flex_stats{
+
+
+}
+.side_bar_flex_2{
+	transition: all 0.4s;
+	padding:10px;
+	padding-top:0px;
+	box-sizing:border-box;
+  flex: 1;
+	overflow:auto;
+	overflow-x: hidden;
+
+}
+.comments_closed{
+	flex:0!important;
+	padding:0!important;
+	opacity:0;
+}
+.comments_closed_title{
+	background:#e9e9e9!important;
+}
+.fade_workout{
+	background:#00df93!important;
+
+}
+.comment_wrapper{
+	background:#f4f4f4;
+	overflow:hidden;
+	transition: all .3s ease-in-out;
+
+}
+.hidden_comment{
+	max-height: 0px;
+
+}
+.blue_name{
+	color:#008aff!important;
+}
+
+.open_comment{
+		max-height:100px;
+}
+.side_bar_cal_item{
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-ms-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+}
+.disable_side_bar_item{
+	height: 0!important;
+	overflow: hidden!important;
+	box-sizing: border-box!important;
+	padding: 0!important;
+	margin: 0!important;
+}
+.calendar_only_item{
+	transition: opacity .3s ease-in-out;
+}
+.plan_to_hide{
+		transition: opacity .3s ease-in-out;
+}
+.side_bar_plan_view{
+	flex:1;
+	transition: opacity .3s ease-in-out;
+	display: flex;
+flex-direction: column;
+}
+.all_plans{
+	height:288px;
+	overflow-y: scroll;
+	overflow-x: none;
+}
+.plan_stats{
+	flex:1;
+	padding-left:10px;
+	padding-right:10px;
+}
+.plan_buttons{
+	box-sizing: border-box;
+	display:flex;
+	border-radius: 7.5px;
+	margin: 7px 10px 7px 10px;
+	border: 1px solid transparent;
+	/*background: rgb(139, 139, 139);*/
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00c8e2+0,00c4b3+100 */
+	overflow: hidden;
+}
+
+.plan_button{
+	text-decoration: none;
+	background: #00c8e2; /* Old browsers */
+	background: -moz-linear-gradient(left,  #00c8e2 0%, #00c4b3 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  #00c8e2 0%,#00c4b3 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  #00c8e2 0%,#00c4b3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c8e2', endColorstr='#00c4b3',GradientType=1 ); /* IE6-9 */
+
+	padding:10px;
+	box-sizing: border-box;
+	flex:1;
+	text-align:center;
+
+	color:white;
+	font-weight:bold;
+}
+.plan_button_delete{
+	text-decoration: none;
+
+	/*background: #ff7585; */
+	background: #4f5154;
+	padding:10px;
+	box-sizing: border-box;
+	flex:1;
+	text-align:center;
+
+	color:white;
+	font-weight:bold;
+}
+
+
+.fading_label{
+	  max-height: 0;
+		overflow:hidden;
+		 transition: max-height 0.6s, padding 0.6s;
+		 opacity: 0;
+}
+.active_label {
+  max-height: 100px!important;
+	opacity: 1;
+  transition: max-height 0.9s, padding 0.9s, opacity 0.5s;
+}

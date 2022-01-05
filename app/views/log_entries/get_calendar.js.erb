@@ -1,0 +1,9 @@
+$('#right_container').html("<%= escape_javascript(render 'log_entries/calendar') %>");
+paint_workouts()
+
+$('#right_container').animate({
+	opacity:1
+},400)
+<% @update_comments = true %>
+<%= render :partial => 'update_side_bar', :locals => {} %>
+adjust_side_bar('calendar')

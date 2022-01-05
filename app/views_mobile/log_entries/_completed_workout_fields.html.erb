@@ -1,0 +1,25 @@
+	<% if f.object.workout_times.size < 1 %>
+		<% f.object.workout_times.build(:zone => 1)%>
+	<% end %>
+	<% if f.object.workout_times.size == 1 %>
+ 	 <% table_visible = "hidden" %>
+	<% end %>
+<div class="time_container">
+<div class="padding_mobile_workout">
+	<label for="total_completed">total:</label>
+	<div class="input_mobile_container"><input type="tel" pattern="[0-9]*" name="total_completed"   maxlength="4" size="5" placeholder="H:MM" class="add_colon_field mobile_input  total_duration_field format_time_mobile time_respond_mobile" id="total_completed_mobile" autocomplete="off" novalidate="novalidate"></div>
+<%= link_to_add_fields_mobile('add_field', f, :workout_times) %></div>
+<div class="padding_mobile_workout">
+<div class="table_animate <%= table_visible %>">
+<table class="duration_table">
+	<tr><th>sets</th><th>time</th><th>rest</th><th>zone</th></tr>
+
+		<%= f.fields_for :workout_times do |builder| %>
+	  	<% the_zone =  builder.object.zone %>
+	  <%= render 'workout_time_fields', :f => builder, :the_zone => the_zone  %>
+
+	<% end %>
+</table>
+</div>
+</div>
+</div>

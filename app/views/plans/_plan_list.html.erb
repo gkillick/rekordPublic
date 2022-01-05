@@ -1,0 +1,8 @@
+<div class="all_plans">
+<% if @plans.size < 1 %>
+<div class="plan_blank"><span class="text_medium">no plans found</span></div>
+<% end %>
+<% @plans.each do |plan| %>
+	<%= render :partial => 'plans/plan_bar', :locals => {:plan => plan} %>
+<% end %>
+</div>

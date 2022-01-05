@@ -1,0 +1,402 @@
+a {
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+
+}
+html {
+-ms-touch-action: manipulation;
+touch-action: manipulation;
+}
+.spin_gif_top, .spin_gif_bottom{
+	width:30px;
+	height:30px;
+	position:absolute;
+	z-index:9999999999;
+
+	margin-left: auto;
+	margin-right: auto;
+	top:25px;
+	left: 0;
+	right: 0;
+
+}
+
+
+@media only screen and (max-width: 600px) {
+html, body {
+	overflow:hidden;
+}
+}
+body {
+  position: relative
+}
+.main_content_container{
+	position:relative;
+	width:100vw;
+	height:100vh;
+}
+.main_content_m{
+	display:flex;
+	padding:0;
+	margin:0;
+	position:absolute;
+	width:270vw;
+	left:-70vw;
+	height:100vh;
+	transition: transform .2s ease-out;
+}
+.left_cell_m{
+
+	box-sizing: border-box;
+	display:inline-block;
+	width:70vw;
+	height:100vh;
+	background:#313131;
+}
+.main_cell_m{
+	box-sizing: border-box;
+	display:inline-block;
+	width:100vw;
+	height:100vh;
+
+}
+
+.right_cell_m{
+	position:relative;
+	box-sizing: border-box;
+	display:inline-block;
+	width:100vw;
+	height:100vh;
+	background:white;
+
+}
+
+
+.nav_item_m{
+	background:#343434;
+	margin:2px;
+	padding:15px;
+	width:70vw;
+	color:white;
+	font-size:20px;
+	text-align:center;
+	box-sizing: border-box;
+}
+.nav_item_m a{
+	color:white;
+	text-decoration:none;
+}
+.navigation {
+
+    background: #2b2b2b;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+.site-wrap {
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #fff;
+    position: relative;
+    top: 0;
+    bottom: 100%;
+    left: 0;
+
+    z-index: 1;
+}
+
+
+.new_workout_slide {
+	left: -100vw;
+}
+.open_nav_m {
+    transform: translate3d(70vw, 0, 0);
+
+}
+
+#open_side_bar_m{
+	padding:20px;
+	padding-left:15px;
+}
+.site-wrap {
+    transition: left .3s ease-out;
+}
+
+#rekord_logo_m{
+  -webkit-transition: opacity 5s ease-out;
+  -moz-transition: opacity .4s ease-out;
+  -ms-transition: opacity .4s ease-out;
+  -o-transition: opacity .4s ease-out;
+  transition: opacity .4s ease-out;
+ -webkit-transition-delay: .5s; /* Safari */
+     transition-delay: .5s;
+	font-size:50px;
+	font-weight:bold;
+  position: fixed;
+
+  top: 45%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -70px;
+}
+
+#top_bar_m{
+	position:relative;
+	background:white;
+	left:0px;
+z-index:99999;
+	color:#303030;
+	letter-spacing:1px;
+	right:0px;
+	opacity:.96;
+	height:75px;
+	line-height:75px;
+	font-size:25px;
+	font-weight:bold;
+	padding-left:0px;
+	padding-right:0px;
+
+
+}
+.month_title_m{
+	right:0;
+	left:0;
+	text-align:center;
+	position:absolute;
+	z-index:-1;
+}
+.get_graph_m{
+	padding-right:15px;
+	padding-left:20px;
+	cursor:pointer;
+	float:right;
+	text-decoration:none;
+	color:black;
+}
+
+.dates_container_m {
+
+	z-index:0;
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch; /*MAKES OVERFLOWN OBJECTS HAVE INERTIA SCROLLING*/
+
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	transition: all .4s;
+}
+
+
+.dates_m{
+	position:relative;
+	overflow:hidden;
+	transition: all .3s;
+	max-height:80px;
+
+}
+
+.workout_m{
+	position:relative;
+	width:100%;
+	font-size:20px;
+	box-sizing: border-box;
+	height:64px;
+	overflow:hidden;
+	background:white;
+	color:#00a8ff;
+	text-align:right;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+
+
+}
+
+.delete_workout_link_m{
+	float:left;
+	display:inline-block;
+	text-decoration:none;
+	color:#b7b7b7;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+
+
+}
+.edit_workout_mobile{
+	color:#00a8ff;
+	text-decoration:none;
+	box-sizing: border-box;
+	padding:20px;
+	text-align:right;
+	width:calc(100% - 64px);
+	display:inline-block;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+
+}
+.icon-cancel{
+	text-align:center;
+
+	width:64px;
+	height:64px;
+	line-height:70px;
+
+}
+.new_workout_m{
+		background:white;
+		color:#00a8ff;
+		font-weight:bold;
+		padding:20px;
+		font-size:20px;
+		text-align:center;
+
+}
+.eighty_percent{
+	background-position: 0% 80%!important;
+}
+.twenty_percent{
+	background-position: 0% 20%!important;
+}
+.dates_m_container{
+	height:80px;
+	position:relative;
+}
+.log_entry_hidden_m{
+
+	position:relative;
+}
+.total_time_m{
+	position:absolute;
+
+	display:inline-block;
+	color:white;
+	width:100%;
+	box-sizing: border-box;
+	padding-right:15px;
+	text-align:right;
+	line-height:80px;
+	font-size:20px;
+	font-weight:300;
+}
+.total_workouts_m{
+	border-radius:50%;
+	background:#18d0db;
+	display:inline-block;
+	color:white;
+	width:25px;
+	font-size:15px;
+
+	height:25px;
+	line-height:25px;
+	margin-right:10px;
+	text-align:center;
+}
+.slash_hours_m{
+	color:#99d5ff;
+}
+.planned_time_total_m{
+	opacity:.7;
+}
+.new_month_m{
+	color:white;
+	font-size:40px;
+	line-height:80px;
+	width:100%;
+	text-align:center;
+	display:inline-block;
+  -webkit-transition: opacity .6s ease-out;
+  -moz-transition: opacity .6s ease-out;
+  -ms-transition: opacity .6s ease-out;
+  -o-transition: opacity .6s ease-out;
+  transition: opacity .6s ease-out;
+}
+.date_circle_m{
+	text-align:center;
+	color:white;
+	padding-top:7px;
+	font-weight:bold;
+	box-sizing: border-box;
+	font-size:13px;
+	margin: auto;
+	position: absolute;
+	  top: 0; left: 15px; bottom: 0;
+	height:48px;
+	width:48px;
+	border-radius:50%;
+
+
+}
+.gradient_m{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#35f2eb+0,0074bc+100 */
+	background: #35f2eb; /* Old browsers */
+	background: -moz-linear-gradient(top, #35f2eb 0%, #0074bc 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #35f2eb 0%,#0074bc 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #35f2eb 0%,#0074bc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#35f2eb', endColorstr='#0074bc',GradientType=0 ); /* IE6-9 */
+	background-size: 1000px 1000px;
+}
+.gradient_reverse_m{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0074bc+0,35f2eb+100 */
+	background: #0074bc; /* Old browsers */
+	background: -moz-linear-gradient(top, #0074bc 0%, #35f2eb 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #0074bc 0%,#35f2eb 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #0074bc 0%,#35f2eb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0074bc', endColorstr='#35f2eb',GradientType=0 ); /* IE6-9 */
+	background-size: 1000px 1000px;
+}
+.today_m{
+	background:white;
+	color:#2da0c1;
+}
+.invisible_m{
+	opacity:0;
+
+
+}
+#everything{
+
+ -webkit-transition: opacity 1s ease-out;
+ -moz-transition: opacity 1s ease-out;
+ -ms-transition: opacity 1s ease-out;
+ -o-transition: opacity 1s ease-out;
+ transition: opacity 1s ease-out;
+-webkit-transition-delay: 1.0s; /* Safari */
+    transition-delay: 1.0s;
+}
+
+/* animate flash for updated workout */
+
+@-webkit-keyframes flash {
+    0% {
+        background-color: #16dcf3;
+        opacity:1;
+			}
+
+    100% {
+        background-color: white;
+    }
+}
+
+.flash {
+    -webkit-animation-name: flash;
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+}

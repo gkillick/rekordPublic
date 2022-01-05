@@ -1,0 +1,87 @@
+<div class="main_content_container">
+<div class="main_content_m">
+<div class="left_cell_m">
+
+
+
+		<div class="nav_item_m">Mobile beta</div>
+		<div class="nav_item_m"><%= link_to "Sign out "+ @user.first_name, destroy_user_session_path, :class => "sign_out_mobile", method: :delete %></div>
+
+
+
+
+</div>
+<div class="main_cell_m">
+
+	<div class="site-wrap">
+	<div id="rekord_logo_m">rekord</div>
+	<div id="everything" class="invisible_m">
+	<div id="top_bar_m" >
+
+
+	<span id="open_side_bar_m" class="icon-bars"></span>
+	<span class="month_title_m"><%= Date.today.strftime("%B")%></span>
+	<span class="icon-chart-area get_graph_m"></span>
+	<%= link_to("", "/graph_mobile/"+ @user.id.to_s+"/"+start_date_year(@user.preferences.start_date).to_s, html_options = {:remote => true, :class => "hidden get_graph_m_link"})%>
+
+	</div>
+	<div id="content" >
+
+	<% side_bar_style = "left:-20%; "%>
+	<% right_container_style = "left:0; width:100%;" %>
+	<% open = "" %>
+
+<% start_date = Date.today - 20.days %>
+<% x = 0 %>
+<div class="dates_container_m noSwipe">
+
+
+	<% 40.times do |n| %>
+
+
+	<% if (start_date + n.days).day == 1 %>
+	<div class="dates_m new_month_cell_m dates_m_container" data-month="<%= I18n.t("date.month_names")[(start_date + n.days).month] %>" data-date="<%= (start_date + n.days).to_s %>">
+
+		<span class="new_month_m"><%= I18n.t("date.month_names")[(start_date + n.days).month] %></span></div>
+	<% end %>
+
+	<div class="dates_m " data-month="<%= I18n.t("date.month_names")[(start_date + n.days).month] %>" data-date="<%= (start_date + n.days).to_s %>" id="c_<%= (start_date + n.days).to_s %>">
+		<div class="dates_m_container">
+			<% if n == 1 %>
+			<%= image_tag('Spin.apng', :class=>"spin_gif_top" )%>
+			<% end %>
+			<% if n == 39 %>
+			<%= image_tag('Spin.apng', :class=>"spin_gif_bottom" )%>
+			<% end %>
+		<%= render partial: "day_title", locals: {day_date: (start_date + n.days), log_entry: @entries[x]} %>
+	</div>
+		<div class="log_entry_hidden_m">
+		<% if @entries[x] != nil && @entries[x].date == (start_date + n.days) %>
+
+
+			<%= render partial: "workout_title", locals: {entry: @entries[x], athlete_id: @athlete.id, start_date: @start_date.to_date}%>
+
+
+		<% x += 1 %>
+		<% end %>
+			<%= link_to_new_entry_mobile((start_date + n.days).to_s, ('<div class="new_workout_m">add workout</div>').html_safe,@athlete.id.to_s, @start_date) %>
+
+		</div>
+
+
+	</div>
+
+		<% end %>
+
+</div>
+
+
+	</div>
+
+	</div>
+</div>
+
+</div>
+<div class="right_cell_m"><div class="right_cell_content "></div></div>
+</div>
+</div>

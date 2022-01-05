@@ -1,0 +1,54 @@
+<%= form_for @log_entry, :remote => true, :class => 'log_entry_form' do |f| %>
+<%= hidden_field_tag :calendar_date, @start_date %>
+<%= hidden_field_tag :edit, @edit %>
+<% if @plan != nil %>
+	<%= hidden_field_tag :plan_id, @plan.id %>
+<% end %>
+<%= f.hidden_field :date, :value => @date %>
+<% if @athlete != nil %>
+	<%= f.hidden_field :athlete_id, :value => @athlete.id %>
+<% else %>
+	<%= f.hidden_field :athlete_id, :value => nil %>
+<% end %>
+<%= f.hidden_field :feel %>
+<%= f.hidden_field :sleep_quality %>
+<%= f.fields_for :workouts do |workout| %>
+<% if workout.object.id == @workout.id %>
+	<div class="current_workout">
+		<%= render "workout_fields", :f => workout %>
+	<% end %>
+<% end %>
+<%= f.submit "save", {:class => 'hidden'} %>
+<% end %>
+
+  <div class="dashboard_entry_comments workout_entry_comments" id="workout_comments_<%= @workout.id%>">
+		<% if @messages.size > 1 %>
+			<% last_id = 0 %>
+			<% @messages.each do |message| %>
+			<% if message.message != nil %>
+			<% unless message == nil || message == ""%>
+			<% if message.user_id == current_user.id %>
+			<div class="dashboard_comment_coach">
+			<% if last_id != message.user_id %><div class="coach_comments_name_coach"><%= User.find(message.user_id).first_name[0]+User.find(message.user_id).last_name[0] %></div> <% end %><div class="dashboard_sub_comment_coach"><%= message.message %></div>
+		</div>
+		<% else %>
+		<div class="dashboard_comment">
+			<% if last_id != message.user_id %><div class="coach_comments_name"><%= User.find(message.user_id).first_name[0]+User.find(message.user_id).last_name[0] %></div><% end %> <div class="dashboard_sub_comment"><%= message.message %></div>
+	</div>
+		<% end %>
+		<% last_id = message.user_id %>
+			<% end %>
+			<% end %>
+			<% end %>
+			<% end %>
+</div>
+<div class="workout_wide_grey">
+	<%= form_for @message, :html => {:class => 'comment_form_athlete new_message'}, :remote => true do |message| %>
+		<%= message.hidden_field :workout_id, :value => @message.workout_id %>
+		<%= message.hidden_field :user_id, :value => @user.id %>
+		<%= message.text_area :message, class: "chat_input_field message_field athlete_comment_messenger", rows: 1, :placeholder => "type a comment..", :autocomplete => :off %>
+		<%= message.submit "save", {:class => "hidden"} %>
+	<% end %>
+</div>
+
+</div>

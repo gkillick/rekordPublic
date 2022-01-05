@@ -1,0 +1,9 @@
+<ul id="log_<%= entry.id %>" class="workout_list">
+	<% entry.workouts.each do |workout| %>
+	<% if workout.activity_id == nil %>
+	<% workout.destroy %>
+	<% else %>
+		<%= link_to_edit_workout(workout,entry.date,@plan_true, current_user.preferences.activities, @start_date.to_date)  %>
+		<% end %>
+	<% end %>
+</ul>

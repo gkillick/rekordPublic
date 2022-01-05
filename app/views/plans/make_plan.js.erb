@@ -1,0 +1,38 @@
+$('.plan_blank').remove()
+$('#edit_plan_container').html("<%= escape_javascript(render('edit_plan')) %>")
+	//	auto_size_text($('.plan_title_edit'))
+
+
+//side bar add plan
+$('.all_plans').prepend("<div class='temporary_plan_container'><%= escape_javascript(render :partial => 'plans/plan_bar', :locals => {:plan => @plan}) %></div>")
+$('.active_plan').removeClass('active_plan')
+$('.edit_plan_link').first().children('.plan').addClass('active_plan')
+
+//adjust delete link
+var plan_id = $('.active_plan').attr('id').slice(7)
+
+var delete_url = $('.plan_button_delete').attr('href')
+delete_url = delete_url.split('/')
+delete_url[3] = "plan"+plan_id
+$('.plan_button_delete').attr('href', delete_url.join('/'))
+
+$('.temporary_plan_container').css('height')
+$('.temporary_plan_container').css('opacity')
+$('.temporary_plan_container').css({
+	opacity: 1,
+	height: '59px'
+})
+var cnt = $(".temporary_plan_container").contents();
+
+setTimeout(function(){
+	$('.temporary_plan_container').replaceWith(cnt);
+	$('.edit_plan_link').first().children('.plan').children('.plan_name').focus()
+},400)
+
+$('#right_container').fadeIn("fast", function(){
+	$('.plan_button_new').removeClass('disabled')
+})
+
+<%= render :partial => 'update_plan_stats', :locals => {} %>
+prepare_plan()
+$('.plan_button_delete').removeClass('disabled')

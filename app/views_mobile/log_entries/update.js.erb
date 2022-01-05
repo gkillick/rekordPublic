@@ -1,0 +1,28 @@
+
+var workout_id = "<%= @workout_id %>"
+$('.main_content_m').toggleClass('new_workout_mobile')
+$('.right_cell_content').html('')
+
+//update the title of date
+$('#c_<%= @log_entry.date.to_s %>').children('.dates_m_container').html('<%= escape_javascript(render partial: "athletes/day_title", locals: {day_date: @log_entry.date, log_entry: @log_entry}) %>')
+
+
+//update workouts and or add div
+	$('#c_<%= @log_entry.date.to_s %>').children('.log_entry_hidden_m').children('.workout_m').remove()
+	$('#c_<%= @log_entry.date.to_s %>').children('.log_entry_hidden_m').prepend('<%= escape_javascript(render partial: "athletes/workout_title", locals: {entry: @log_entry, athlete_id: @log_entry.athlete_id, start_date: @log_entry.date}) %>')
+
+$(".variable_link").addClass('disabled_link')
+setTimeout(function(){
+	$('.variable_link').removeClass('disabled_link')
+},900)
+//flash the updated workout
+
+  $('#workout_'+workout_id).removeClass("flash");
+  setTimeout(function() {
+      $('#workout_'+workout_id).addClass("flash");
+
+  }, 1);
+	
+//resize the height of workouts container
+	var workouts_container = $('#c_<%= @log_entry.date.to_s %>')
+	workouts_container.css('max-height', workouts_container.children('.log_entry_hidden_m').height()+80)

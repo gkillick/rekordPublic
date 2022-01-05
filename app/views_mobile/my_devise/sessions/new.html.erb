@@ -1,0 +1,24 @@
+
+	<div class="login_mobile">
+		<div class="center_vertical_mobile">
+<center><span class="rekord_title">rekord</span></center>
+</br>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+  <%= f.text_field :email, :class => "no_shadow", :placeholder => "Email" %>
+
+
+  <%= f.password_field :password, :class => "no_shadow", :placeholder => "Password" %>
+
+  <% if devise_mapping.rememberable? -%>
+    <%= f.check_box :remember_me, :class => "check_box_login" %> <span class="remember_me">remember me</span>
+  <% end -%>
+
+  <%= f.submit "Sign in", :id => "login_button" %>
+<% end %>
+<span class="sign_in_links">
+<%= render :partial => "devise/shared/links" %>
+</span>
+
+</div>
+</div>

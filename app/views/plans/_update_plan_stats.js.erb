@@ -1,0 +1,37 @@
+
+$('.plan_container').html("<%= escape_javascript(render('plans/copy_history')) %>")
+<% intensity_totals = @plan_zones %>
+$('#plan_id_'+<%= @plan.id %>).find('.plan_hours').html('<%= intensity_totals.inject(0){|sum,x| sum + x }/60.0/60.0.round(2)  %> <span class="hrs">hrs</span>')
+if($('.workout_present').size() > 0){
+var first_date = Date.parse($('.workout_present').first().data('date'))
+var last_date = Date.parse($('.workout_present').last().data('date'))
+if(first_date == last_date){
+  days = 0
+}else{
+var days = Math.round((last_date - first_date)/60/60/24/1000 + 1)
+}
+$('#plan_id_'+<%= @plan.id %>).find('.bottom_fraction').html(days+' <span class="plan_days">days</span>')
+
+}else{
+  $('#plan_id_'+<%= @plan.id %>).find('.bottom_fraction').html('0 <span class="plan_days">days</span>')
+}
+<% if intensity_totals.inject(0){|sum,x| sum + x } > 0 %>
+$('#side_bar_plan_stats_label').addClass('active_label')
+<% else %>
+$('#side_bar_plan_stats_label').removeClass('active_label')
+<% end %>
+
+
+
+<% intensity_totals.each_with_index do |zone_time, index| %>
+<% if percentage_array(intensity_totals,index) != 0 %>
+$('#row_for_zone_<%= (index+1).to_s %>').addClass('active')
+$('#row_for_zone_<%= (index+1).to_s %>').children('.tooltip_element').attr('data-tooltip', '<%= time_clean_seconds_text(intensity_totals[index]) %>')
+<% else %>
+$('#row_for_zone_<%= (index+1).to_s %>').removeClass('active')
+$('#row_for_zone_<%= (index+1).to_s %>').children('.tooltip_element').attr('data-tooltip', '<%= time_clean_seconds_text(intensity_totals[index]) %>')
+<% end %>
+$('#zone_container_<%= (index+1).to_s %>').children('.side_zones_bar').width('<%= percentage_array(intensity_totals,index).to_s %>%')
+$('#zone_container_<%= (index+1).to_s %>').children('.side_zones_bar_2').width('<%= (100 - percentage_array(intensity_totals,index)).to_s %>%')
+
+<% end %>

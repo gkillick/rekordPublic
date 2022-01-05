@@ -1,0 +1,10 @@
+
+var height = $('#workout_message_<%= @message.id %>').height()
+$('#workout_message_<%= @message.id %>').height(height)
+$('#workout_message_<%= @message.id %>').addClass('remove_message')
+$('#workout_message_<%= @message.id %>').height(0)
+
+var height = $('#message_<%= @message.id %>').parent().height()
+$('#message_<%= @message.id %>').parent().height(height)
+$('#message_<%= @message.id %>').parent().addClass('remove_message')
+$('#message_<%= @message.id %>').parent().height(0)

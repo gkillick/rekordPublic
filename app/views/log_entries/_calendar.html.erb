@@ -1,0 +1,73 @@
+	<% copy_button = "<div class='button' >Copy Selected</div>"%>
+	  <% request = "/plans/new/" + @athlete.id.to_s+"/" %>
+	<% cancle_button = "<div id='cancle_button' class='button' >Cancle</div>"%>
+	<% delete_button = "<div id='first_delete_button' class='button_red' >Delete</div>"%>
+	<% confirm_delete_button = "<div class='button_red'>Confirm Delete</div>"%>
+	<% delete_request = "/log_entries/destroy/"+ @athlete.id.to_s+"/"%>
+<div class="edit_container">
+<div id="select_box" data-athlete_id="<%= @athlete.id.to_s %>"><%= cancle_button.html_safe %><%= link_to(copy_button.html_safe, request, :remote => true, "data-type" => :html, :id => "copy_button", method: :post) %><%= delete_button.html_safe %><%= link_to(confirm_delete_button.html_safe, delete_request , :remote => true, "data_type" =>:html, :id => "delete_button", method: :delete) %><div class="close_confirm cancle_calendar" id="cancle_remove">X</div></div>
+<div class="plan_grid_container">
+	<% name = "<div id='graph_icon' ></div>"%>
+	<% request = "/graph/"+ @athlete.id.to_s+"/"+start_date_year(@athlete.preferences.start_date).to_s %>
+<div class="plan_title_grid_container">
+		<% if @user.user_type == "Coach" %>
+		<div class="athlete_name"><%= @athlete.first_name + " " + @athlete.last_name %></div>
+		<% end %>
+	<div class="plan_title_grid">
+		<div id="calendar_navigation" data-start-date="<%= @start_date.to_date %>">
+		<a href="#" class="month_pull_down" data-selected-month="<%= @start_date.strftime("%B") %>" data-selected-year="<%= @start_date.strftime("%Y")%>" data-current-month="<%= Date.today.strftime("%B") %>" data-current-user="<%= @athlete.id.to_s %>"><%= @start_date.strftime("%B %Y") %></a></div><%= link_to(name.html_safe, request, :remote => true, "data-type" => :html, :class => "get_the_graph") %>
+	</div></div>
+<table class="plan_grid" cellspacing="0">
+	<tr class="cal_title cal_header">
+		<th>mon.</th><th>tue.</th><th>wed.</th><th>thu.</th><th>fri.</th><th>sat.</th><th>sun.</th><th>totals</th>
+	</tr>
+</table>
+<div id="plan_grid_scroll">
+<div id="test_grid">
+	<table class="plan_grid" cellspacing="0">
+	<% x = 0 %>
+	<% @rows.times do |row| %>
+	<tr class="grid_days">
+		<% total_planned = 0 %>
+		<% total_completed = 0 %>
+		<% 7.times do |time| %>
+		<% if @first_day_of_cal.month != @start_date.month %>
+		<% month_class = "light_grey" %>
+		<% else %>
+		<% month_class = "dark" %>
+		<% end %>
+
+		<td><div class="grid_cell grid_cell_day  <%= 'future' if @first_day_of_cal >  DateTime.now.beginning_of_day %>" id="g<%= @first_day_of_cal.to_date.to_s %>"><div class="cell_padding"><div class="number_plan_grid <%= month_class %>" id="c<%= @first_day_of_cal.to_date.to_s %>"><%= link_to_new_entry_coach(@first_day_of_cal.to_date.to_s, ('<div class="grey_new_workout"><span class="add_workout_link">+</span><span class="number_class">'+@first_day_of_cal.day.to_s+'</span></div>').html_safe,@athlete.id.to_s, @start_date.to_date) %></div>
+			<% if @entries[x] != nil && @entries[x].date == (@first_day_of_cal.to_date)%>
+			<%= render "plans/plan_cal_entry", :entry => @entries[x], :total_planned => total_planned %>
+			<% @entries[x].workouts.each do |workout| %>
+				<% total_planned += workout.total_planned %>
+				<% total_completed += workout.total_completed %>
+
+			<% end %>
+
+			<% x += 1%>
+			<% end %>
+		</div></div></td>
+		<% @first_day_of_cal += 1.day %>
+		<% end %>
+		<td class="total_grid"><div class="grid_cell">
+			<% unless total_completed == 0 && total_planned == 0 %>
+			<div class="outer_total">
+				<div class="inner_total ">
+					<div class="number_totals"><span class="week_completed"><%= time_cleanup(total_completed/60) %></span> <span class="stats_sub_text">C</span></br></br><span class="week_planned"><%= time_cleanup(total_planned/60) %></span> <span class="stats_sub_text">P</span>
+					</div>
+
+					<%= render partial: 'log_entries/leader_board', :locals => {:row => row} %>
+
+				</div>
+			</div>
+			<% end %>
+			</div></td>
+	</tr>
+	<% end %>
+</table>
+</div>
+</div>
+</div>
+</div>

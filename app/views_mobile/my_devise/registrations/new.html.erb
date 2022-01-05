@@ -1,0 +1,27 @@
+
+	<div class="login_mobile">
+		<center><span class="rekord_title">rekord</span></center>
+</br>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+
+  <%= f.text_field :email, :class => "no_shadow", :placeholder => "Email" %>
+  
+
+  <%= f.text_field :first_name, :class => "no_shadow", :placeholder => "First Name" %>
+
+  <%= f.text_field :last_name, :class => "no_shadow", :placeholder => "Last Name"%>
+  
+  <%= f.select :user_type, [ "Athlete", "Coach" ]  %>
+
+  <%= f.password_field :password, :class => "no_shadow", :placeholder => "Password" %>
+
+  <%= f.password_field :password_confirmation, :class => "no_shadow", :placeholder => "Password Confirmation" %>
+
+<%= f.submit "Sign up", :id => "login_button" %>
+<% end %>
+<span class="sign_in_links">
+<%= render :partial => "devise/shared/links" %>
+</span>
+</div>

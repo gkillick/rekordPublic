@@ -1,0 +1,22 @@
+<div class="login_full_width">
+	<div class="login">
+<center><span class="rekord_title">rekord</span></center>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= f.label :email %><br />
+  <%= f.text_field :email %>
+
+  <%= f.label :password %><br />
+  <%= f.password_field :password %>
+
+  <% if devise_mapping.rememberable? -%>
+    <%= f.check_box :remember_me, :class => "check_box_login" %> <span class="remember_me">remember me</span>
+  <% end -%>
+
+  <%= f.submit "Sign in", :id => "login_button" %>
+<% end %>
+<span class="sign_in_links">
+<%= render :partial => "devise/shared/links" %>
+</span>
+</div>
+</div>

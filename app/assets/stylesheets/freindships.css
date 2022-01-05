@@ -1,0 +1,246 @@
+#search_list {
+	position:absolute;
+	display:block;
+	background:white;
+	width:640px;
+	left:29px;
+	padding-left:0px;
+	border: 1px solid #f4f4f4;
+	border-top:none;
+	margin:0;
+	z-index:99999;
+}
+#search_list li{
+
+	margin:0px;
+	border-bottom:1px solid #f4f4f4;
+	
+
+}
+.search_item_friend{
+	display:table;
+	width:100%;
+	border-spacing: 0px; 
+	margin:0;
+	padding:0;
+	font-size:0;
+}
+.round_mini_thumb{
+	vertical-align:middle;
+	display:inline-block;
+
+}
+.mini_thumb_blank{
+	display:table-cell;
+	vertical-align:middle;
+	width:60px;
+	height:60px;
+	padding:5px;
+	border-right: 1px solid #f4f4f4;
+}
+.inside_mini_thumb{
+	display:inline-block;
+	width:60px;
+	height:60px;
+	background:#fcfcfc;
+}
+
+.search_names{
+	padding-left:10px;
+	font-size:12px;
+	font-weight:bold;
+	display:table-cell;
+	vertical-align:middle;
+	
+	
+}
+.friend_status_link{
+	padding-right:10px;
+	display:table-cell;
+	vertical-align:middle;
+	text-align:right;
+	
+}
+.add_friend{
+	color:white;
+	background:#0dd1a1;
+}
+.add_friend:hover{
+	background:#11c99c;
+}
+.remove_friend{
+	color:white;
+	background:#ff7878;
+}
+.remove_friend:hover{
+	background:#f66c6c;
+}
+.interface_button{
+	text-decoration:none;
+	font-size:12px;
+	font-weight:bold;
+	padding:9px;
+	border-radius:4px;
+	-webkit-transition: background-color 200ms linear;
+    -moz-transition: background-color 200ms linear;
+    -o-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition: background .2s linear;
+    -webkit-transition: background .2s linear;
+    -moz-transition: background .2s linear;
+	
+}
+.friendship_list_container{
+	background:#f4f6f5;
+	border-top:1px solid #eaebed;
+	padding:15px;
+	overflow: hidden;
+
+}
+.friendship_list{
+	float:right;
+	width:100%;
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+
+.friendship_list li:last-child{
+	margin-bottom:0px;
+}
+.friendship_list li{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family:"helvetica neue";
+	padding:10px;
+	display:block;
+	border-radius:10px;
+	border:1px solid #eaebed;
+	background:white;
+	margin-bottom:15px;
+}
+.profile_image_list{
+	border:1px solid #f4f4f4;
+	padding:5px;
+	display:inline-block;
+}
+.friend_wrapper{
+	position:relative;
+	
+}
+.profile_list_name{
+	font-family:"helvetica neue";
+	display:inline-block;
+
+	color:#353535;
+	position:absolute;
+	top:0px;
+	margin-left:15px;
+	letter-spacing:1.5px;
+	font-weight:700;
+	font-size:12px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.profile_type{
+	font-size:10px;
+
+	font-weight:300;
+}
+.pending_requests{
+	display:inline-block;
+	float:right;
+	z-index:9999;
+	
+	
+}
+.pending_button:hover{
+	background:#22a5d6;
+}
+.pending_button{
+	margin-top:2px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-size:12px;
+	font-weight:bold;
+	border-radius: 5px;
+	background:#24abdd;
+	color:white;
+	cursor:pointer;
+}
+.inside_pending_button{
+	padding:10px;
+	display:inline-block;
+}
+
+#friends_search_form{
+	width:100%;
+	display:inline-block;
+}
+#friend_request_list{
+	background:white;
+	z-index:999;
+	background:#eaeaea;
+	padding:10px;
+	
+}
+#friend_request_list ul{
+	width:350px;
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+#friend_request_list ul li{	
+	background:white;
+	padding:5px;
+	border:1px solid #e2e2e2;
+}
+
+.spacer{
+	display:inline-block;
+	width:5px;
+}
+.triangle_grey{
+width:0; /*set dimensions of DIV to 0 so its borders collapse and touch one 
+another*/
+height:0;
+border-color: transparent transparent #eaeaea transparent; /*top, right, bottom, and left border*/
+border-style: solid;
+border-width: 7px; /*width of each border*/
+}
+.friend_request_container{
+	z-index:99999;
+	display:none;
+	width:370px;
+	position:absolute;
+}
+.no_friends{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background:#f4f6f5!important;
+	border:1px dashed #bebebe!important;
+	text-align:center!important;
+	color:#979797;
+	font-size:20px;
+	padding:25px!important;
+	border-radius:5px!important;
+}
+.invite_link{
+	color:#1a9ad6;
+	text-decoration:none;
+}
+.grey_subtitle{
+	font-size:12px;
+	font-weight:bold;
+	margin-bottom:5px;
+	color:#6e6e6e;
+}

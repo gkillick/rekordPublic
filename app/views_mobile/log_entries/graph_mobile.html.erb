@@ -1,0 +1,37 @@
+
+<div class="mobile_graph_container fade_in_mobile">
+	<div class="leader_board_mobile">
+		<div class="leader_board_mobile_title "><%= Date.today.strftime("%B")%></div>
+		<div class="leader_board_mobile_stats"><div><%= time_clean_h(@year_totals[Date.today.month][:completed][:total]).html_safe() %> </div><div><%= time_clean_h(@month_stats["total_hour_year"].inject(0){|sum,x| sum + x }).html_safe %></div><div><%= time_clean_h(@athlete.year_hours_to_today(@year -1)).html_safe() %></div></div>
+		<div class="leader_board_mobile_th"><div>month</div><div>year</div><div>last year</div></div>
+		
+	</div>
+
+
+		<table class="zone_times_table_mobile">
+			<% total =  @year_totals[Date.today.month][:completed][:total_intensity]%>
+			<% @year_totals[Date.today.month][:completed][:total_zones].each_with_index do |sub_total, index|  %>
+			<% if sub_total > 0 && index != 0 %>
+			<tr><td><%= (index + 1).to_s %></td><td><div class="h_graph_mobile_container"><div class="h_graph_mobile_complete gradient_redish" data-percentage="<%= sub_total.to_f/total.to_f*100 %>" style="width:0%; background-position:0 <%= sub_total.to_f/total.to_f*100 %>%; "><%= time_clean_h_m(sub_total).html_safe() %></div></div></td></tr>
+			<% end %>
+			<% end %>
+		</table>
+
+	<div class="leader_board_mobile">
+		<div class="leader_board_mobile_title ">Leaderboard</div>
+		<div class="leader_board_wrapper">
+		<table class="leader_board_mobile_table">
+			<% @leaderboards.each_with_index do |leader_board, index|%>
+			<% leader_board.each do |person| %>
+			<% person[2] == @athlete.id ? row_class = "highlight_mobile_table" : row_class = "" %>
+			<% index != 0 ? row_class_hidden = "hidden" : row_class_hidden = "" %>
+			<tr class="leaderboard_<%= index %> <%= row_class %> <%= row_class_hidden %>"><td><%= person[3] %></td><td><%= person[0] %></td><td><%= time_cleanup(person[1]/60) %></td></tr>
+			<% end %>
+			<% end %>
+
+		</table>
+			</div>
+		<div class="leader_board_mobile_footer"><div data-leaderboard="leaderboard_2">2w</div><div data-leaderboard="leaderboard_1">1w</div><div class="selected_mobile" data-leaderboard="leaderboard_0">now</div></div>
+
+
+</div>

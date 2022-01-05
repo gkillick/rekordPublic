@@ -1,0 +1,394 @@
+.create_plan_text{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	text-align:center!important;
+	color:#979797;
+	font-size:20px;
+
+	margin-top:50px;
+	width:100%;
+}
+#search_plans {
+    border-radius: 10px;
+    font-size: 12px;
+	border:none;
+	padding:5px;
+	width:100%;
+	color:#8b9097;
+
+}
+#search_athletes{
+    border-radius: 10px;
+    font-size: 12px;
+	border:none;
+	padding:5px;
+	width:100%;
+	color:#8b9097;
+
+}
+
+#plan_search_links{
+	padding-top:8px;
+	height:13px;
+	width:100%;
+	text-align:right;
+	color: #424242;
+    font-size: 12px;
+}
+#plan_search_links span{
+	padding-right:10px;
+}
+#plan_search_links a{
+	color: #9b9b9b;
+	text-decoration:none;
+}
+#plan_search_container{
+	display:block;
+	right:0;
+	position:relative;
+	padding:10px;
+	margin-right:10px;
+}
+
+.shadowed {
+	/*background:#ebebeb;*/
+	background:#f2f2f2;
+}
+
+.select_box {
+	border-radius:5px;
+	display:none;
+	padding:7px;
+	padding-right:2px;
+	color:white;
+	text-align:center;
+	background:#212226;
+
+
+
+}
+.tag {
+	border-radius:10px;
+	padding:3px;
+	padding-left:5px;
+	padding-right:5px;
+	line-height:20px;
+	padding: 3px 5px;
+}
+.tag_hrs {
+	font-size:10px;
+	color:white;
+}
+.plan_list {
+
+}
+.plan_blank {
+	padding-left:10px;
+}
+
+.plan {
+	right: 0px;
+	height: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 10px;
+	position: relative;
+	overflow: hidden;
+	transition: opacity .3s ease-in-out, height .3s ease-in-out, background .3s ease-in-out, margin .3s ease-in-out, border .3s ease-in-out;
+	border-radius: 7.5px;
+	margin: 0px 10px 7px 10px;
+	border:1px solid transparent;
+}
+.plan_tags{
+	margin-top:25px;
+	margin-left:10px;
+}
+.plan:hover{
+
+}
+.rounded_date {
+	background:#1f2226;
+	border-radius:10px;
+	height:10px;
+	padding:5px;
+	padding-left:10px;
+	font-size:10px;
+	margin-right:5px;
+
+}
+
+
+.plan_hours {
+	font-size:15px;
+	font-weight:400;
+
+}
+.hrs {
+	font-size:10px;
+	color:#9b9b9b;
+		transition:color .3s ease-in-out;
+}
+.plan_title_edit{
+	display:inline;
+	font-weight:bold;
+	font-size:12px;
+	letter-spacing:2px;
+	background:none;
+	text-align:center;
+	padding:0!important;
+	margin:0;
+	border:none;
+}
+.edit_plan{
+	display:inline;
+}
+.plan_name {
+	color:#4c4c4c;
+	font-style: normal!important;
+	width: 80px;
+	border: none;
+	height: 10px;
+	padding: 5px;
+	font-size: 10px;
+	padding-left: 10px;
+	border-radius: 10px;
+	box-shadow: none;
+	margin-right: 5px;
+	margin-top: 15px;
+	font-weight: 700;
+	background: rgb(221, 221, 221);
+	transition:background .3s ease-in-out;
+
+
+}
+.tag_form{
+	background:none;
+	border:none;
+	height:15px;
+	font-size:11px;
+	box-shadow:none;
+	color:#5f5f5f;
+}
+.hours_fraction {
+	text-align:center;
+	position:absolute;
+	top:0px;
+	left:115px;
+	line-height:50px;
+}
+.hours_fraction_plans {
+text-align: center;
+position: absolute;
+top: 0px;
+right: 15px;
+line-height: 50px;
+}
+.hours_fraction div{
+	display:inline-block;
+}
+.hours_fraction_plans div{
+	display:inline-block;
+}
+.plan_days {
+	color:#9b9b9b;
+	font-size:10px;
+	transition:color .3s ease-in-out;
+}
+.traction {
+	width:25px;
+	height:20px;
+	position:absolute;
+	right:15px;
+	top:14px;
+	cursor: move;
+
+}
+.traction_bar {
+	border-radius:3px;
+	width:25px;
+	height:3px;
+	margin-bottom:2px;
+}
+.white {
+	color:white;
+}
+.black {
+	color:black !important;
+}
+.add_week{
+	cursor: pointer;
+	display:inline-block;
+	font-size: 12px;
+	padding:10px;
+	letter-spacing: 1px;
+	background: #f4f4f4;
+	font-weight: 500;
+	border-radius: 7.5px;
+	position: relative;
+}
+.add_week:last-child{
+	margin-left:10px;
+}
+.row_menu{
+	position:absolute;
+	top: 40px;
+	left:0px;
+	right:0px;
+	text-align:center;
+	z-index: 99999999999;
+	display: none;
+}
+.row_link{
+	width:100%;
+	box-sizing: border-box;
+	background: #f4f4f4;
+	padding: 10px;
+
+}
+.row_link:hover{
+		background: rgb(139, 139, 139);
+		color:white
+}
+.row_link:first-child{
+	border-top-left-radius: 7.5px;
+	border-top-right-radius: 7.5px;
+	border-bottom:1px solid rgb(219, 219, 219);
+}
+.row_link:last-child{
+	border-bottom-left-radius: 7.5px;
+	border-bottom-right-radius: 7.5px;
+}
+.times_r{
+	padding-left:5px;
+	font-family:Georgia;
+	font-style:italic;
+	font-size:10px;
+	line-height:35px;
+	height:35px;
+	float:left;
+}
+#edit_rows{
+
+	display:inline-block;
+
+}
+#edit_rows_bottom{
+	margin-top:10px;
+
+}
+#remove_row_top {
+	padding-left:5px;
+	cursor:pointer;
+		display:inline-block;
+
+}
+#remove_row_bottom {
+	padding-left:5px;
+	cursor:pointer;
+	display: inline-block;
+
+}
+.below_table_plan{
+	height:40px;
+	width:100%;
+}
+#add_row_top {
+	cursor:pointer;
+}
+#add_row_bottom{
+	cursor:pointer;
+}
+#confirm_remove{
+	z-index:9999999;
+}
+.bottom_fraction{
+	font-size:15px;
+	font-weight:400;
+}
+.plan_blank{
+	font-size:12px;
+}
+.edit_plan_side_bar{
+	display: inline-block;
+	position: absolute;
+	right: 10px;
+	font-size: 15px;
+	top: 17px;
+	color: rgb(100, 97, 101);
+}
+#search_all_plans{
+	border-radius: 10px;
+	font-size: 12px;
+	border: none;
+	padding: 5px;
+	width: calc(100% - 20px);
+	color: #8b9097;
+	margin:10px;
+	box-sizing: border-box;
+}
+.active_plan{
+	background:rgb(197, 197, 197)!important;
+}
+.active_plan .plan_name{
+	background:rgb(139, 139, 139)!important;
+	color:white!important;
+}
+.new_plan_link{
+	text-decoration: none;
+}
+.temporary_plan_container{
+		height:0;
+		opacity:0;
+		margin-top: 0;
+		margin-bottom: 0;
+		border:0;
+		transition: opacity .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, border .3s ease-in-out;
+}
+a.disabled {
+
+  pointer-events: none;
+  cursor: default;
+}
+
+.zone_bar_graph{
+	margin-top:5px;
+	width: 100%;
+height: 20px;
+
+}
+.zone_bar_graph_1{
+	height:20px;
+	display: inline-block;
+	width:90%;
+	background:#3badef;
+
+}
+.zone_bar_graph_2{
+	height:20px;
+	width:0%;
+	display: inline-block;
+	background:#3badef;
+
+}
+.zone_bar_graph_3{
+	height:20px;
+	width:3%;
+	display: inline-block;
+	background:#3badef;
+
+}
+.zone_bar_graph_4{
+	display: inline-block;
+	background:#3badef;
+	height:20px;
+	width:7%;
+
+}
+.zone_bar_graph_5{
+	display: inline-block;
+	background:#3badef;
+	height:20px;
+	width:0%;
+
+}

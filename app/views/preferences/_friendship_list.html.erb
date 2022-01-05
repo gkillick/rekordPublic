@@ -1,0 +1,19 @@
+<div class="preferences_nav_content" id="preferences_friends" style="<%= 'display: none;' if @tab != "friends" %>">
+<div class="preferences_inner_wrapper friend_search_wrapper">
+<%= render :template => "friendships/index" %> 	
+</div>
+<div class="friendship_list_container">
+	<ul class="friendship_list">
+		<% if @pending_requests.size > 0 %>
+		<% @pending_requests.each do |user| %>
+		<% end %>
+		<% end %>
+		<% if @friends.size == 0 %>
+		<li class="no_friends">search or <a class="invite_link" href="#">invite friends</a></li>
+		<% end %>
+		<% @friends.each do |friend| %>
+		<%= render 'friend_permissions', :friend => friend %>
+		<% end %>
+	</ul>
+</div>
+</div>

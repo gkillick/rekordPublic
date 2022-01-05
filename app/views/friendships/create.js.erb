@@ -1,0 +1,2 @@
+<% friend_link = link_to_remove_friend("cancel request", @friend_id.to_s, "remove") %>
+$('#search_item_friend_<%= @friend_id.to_s %>').find('.friend_status_link').first().html('<%= friend_link %>')

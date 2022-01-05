@@ -1,0 +1,61 @@
+<%= hidden_field_tag :workout_id, f.object.id %>
+<div class="expanding_area expanding_area_instructions"><pre class="workout_wide_grey instructions"><span></span></br></pre>
+</div>
+<div class="workout_grid_container">
+  <div class="workout_grid_cell w_half">
+    <div class="activity_grid">
+      <% unless activities_clean(@preferences.activities).include? f.object.activity_id %>
+        <% activities = activities_clean(@preferences.activities.dup) %>
+        <% activities.push(f.object.activity_id) %>
+      <% else %>
+        <% activities = activities_clean(@preferences.activities.dup) %>
+      <% end %>
+      <%= f.select(:activity_id, activities,{}, {:class =>"custom_select"} ) %>
+    </div><div class="time_grid">
+    <%= f.select(:time, [['AM', '1'],['PM', "2"]], {}, {:class =>"custom_select"} )%>
+  </div>
+  </div><div class="workout_grid_cell w_half" style="text-align: right;">
+  <div class="attach_file"><span class="icon-upload"></span>&nbsp; attach</div>
+</div>
+  <div class="w_whole workout_spacer">
+  </div>
+  <% unless @plan_true %>
+    <div class="workout_grid_cell w_half">
+      <% if f.object.completed_workouts.size < 1 %>
+        <% f.object.completed_workouts.build %>
+      <% end %>
+
+      <%= f.fields_for :completed_workouts do |workout_build| %>
+        <%= render "completed_workout_fields", :f => workout_build, :workout_class => "Completed" %>
+      <% end %></div><% end %><% if f.object.planned_workouts.size < 1 %><% f.object.planned_workouts.build %>
+  <% end %><div class="workout_grid_cell w_half">
+  <%= f.fields_for :planned_workouts do |workout_build| %>
+    <%= workout_build.text_area :instructions, :id =>'instructions_text_area', :class => 'instructions_text_area grey_light' %>
+    <%= render "completed_workout_fields", :f => workout_build, :workout_class => "Planned" %>
+  <% end %>
+</div>
+</div>
+<% unless @plan_true %>
+  <div class='full_length_container'>
+    <div class="w_half workout_grid_cell slider_container">
+      <div class="slider_bar_container">
+        <div class="center_sports grey label_slider">feel</div>
+        <div class="slider_inside_container">
+          <div class="slider"></div>
+          <div class="slider_percentage feel_gradient"></div>
+          <div class="new_circle_slider" data-form="#log_entry_feel" data-content=""></div>
+        </div>
+      </div>
+    </div><div class="w_half workout_grid_cell slider_container">
+    <div class="slider_bar_container">
+      <div class="center_sports grey label_slider">sleep</div>
+      <div class="slider_inside_container">
+        <div class="slider"></div>
+        <div class="slider_percentage feel_gradient"></div>
+        <div class="new_circle_slider" data-form="#log_entry_sleep_quality"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <% end %>

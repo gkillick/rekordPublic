@@ -1,0 +1,48 @@
+
+
+<% if @month_stats != nil %>
+
+$('#year_hours').html('<%= escape_javascript("%g" % (((@month_stats["total_hour_year"].inject(0){|sum,x| sum + x }/60.0/60.0)).floor).to_s) %>')
+$('#month_hours').html('<%= escape_javascript("%g" % (((@month_stats["zone_totals_month"].inject(0){|sum,x| sum + x }/60.0/60.0)).floor).to_s) %>')
+$('#feel_change .row_spacer').html('<%= escape_javascript(format_feel_trend(@month_stats["seven_day_feel"].last)) %>')
+
+$('#hours_total .row_spacer').html('<%= add_array(@month_stats["zone_totals_month"]).to_i.floor.to_s %>/<%= @month_stats["planned_hours_month"] %>')
+$('#month_hours_width').width('<%= percentage_width(add_array(@month_stats["zone_totals_month"]),@month_stats["planned_hours_month"]) %>%')
+$('#month_hours_sub_width').width('<%= 100 - percentage_width(add_array(@month_stats["zone_totals_month"]),@month_stats["planned_hours_month"]) %>%')
+$('#month_hours_width').css('background-position','0% <%= percentage_width(add_array(@month_stats["zone_totals_month"]),@month_stats["planned_hours_month"]) %>%')
+
+
+
+$('#feel_ratio .row_spacer').html('<%= escape_javascript(trim(@month_stats["seven_day_feel"][-2][1]).to_s) %>/10')
+$('#feel_side_bar').width('<%= escape_javascript((@month_stats["seven_day_feel"][-2][1]*10).to_s) %>%')
+$('#sub_feel_side_bar').width('<%= escape_javascript((100 - @month_stats["seven_day_feel"][-2][1]*10).to_s) %>%')
+$('#feel_side_bar').css('background-position','0% <%= escape_javascript((@month_stats["seven_day_feel"][-2][1]*10).to_s) %>%')
+$('#planned_hours').html("<%= @month_stats['planned_hours_month'] %>")
+$('#side_bar_stats_label').html("<%= @month_stats['current_date'].strftime('%B') %> Stats")
+
+<% intensity_totals = @month_stats["zone_totals_month"]  %>
+<% intensity_totals.shift %>
+
+// remove first row of intensity table if empty
+<% if intensity_totals.inject(0){|sum,x| sum + x } > 0 %>
+$('#intensity_first_row').addClass('active')
+<% else %>
+$('#intensity_first_row').removeClass('active')
+<% end %>
+
+<% intensity_totals.each_with_index do |zone_time, index| %>
+<% if percentage_array(intensity_totals,index) != 0 %>
+$('#row_for_zone_<%= (index+2).to_s %>').addClass('active')
+$('#row_for_zone_<%= (index+2).to_s %>').children('.tooltip_element').attr('data-tooltip', '<%= time_clean_seconds_text(intensity_totals[index]) %>')
+<% else %>
+$('#row_for_zone_<%= (index+2).to_s %>').removeClass('active')
+$('#row_for_zone_<%= (index+2).to_s %>').children('.tooltip_element').attr('data-tooltip', '<%= time_clean_seconds_text(intensity_totals[index]) %>')
+<% end %>
+$('#zone_container_<%= (index+2).to_s %>').children('.side_zones_bar').width('<%= percentage_array(intensity_totals,index).to_s %>%')
+$('#zone_container_<%= (index+2).to_s %>').children('.side_zones_bar_2').width('<%= (100 - percentage_array(intensity_totals,index)).to_s %>%')
+
+<% end %>
+<% end %>
+<% if @update_comments %>
+$('.comments').html('<%= j render "athletes/comments", comments: @comments %>')
+<% end %>

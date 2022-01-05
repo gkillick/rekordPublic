@@ -1,0 +1,156 @@
+<div id="graph_container">
+  <% name = "<div id='cal_icon' ></div>"%>
+  <% request = "/log_entries/get_calendar/" + @athlete.id.to_s+"/"+(Time.now.at_midnight).to_s %>
+<div class="graph">
+
+
+<% planned_hours = JSON.parse(@annual_training_plan.month_hours)%>
+
+<% ceiling = @year_totals[:ceiling] %>
+
+
+<div class="y_axis_atp" data-ceiling="<%= ceiling/60/60 %>"><div class="y_top"><%= ceiling/60/60 %></div><div class="y_middle"><%= ceiling/2/60/60 %></div></div>
+<div class="area">
+<div class="graph_title"><div class="plan_title_grid"><a href="#" class="edit_atp_link"><span class="icon-pencil"></span></a><a href="#" class="date_pull_down" data-current-user="<%= @athlete.id.to_s %>" data-year-within="<%= start_date_year(@start_date) %>" data-current-year="<%= @start_date.year %>"> <%= @start_date.year %>-<%= (@start_date + 1.year).strftime("%y") %></a><%= link_to(name.html_safe, request, :remote => true, "data-type" => :script, :class => "get_the_cal graph_get_the_cal") %></div></div>
+
+<% n = 0 %>
+<% 12.times do |n| %>
+  <div class="sub_bar">
+  <div class="bar_select" id="<%= (@start_date+n.months).to_s+"&"+@athlete.id.to_s %>">
+    <div class="graph_planned bar_animated" style="height:<%= planned_hours[n].to_i*60*60/ceiling.to_f*100 %>%;"></div>
+    <div class="sub_bar2 bar_animated" style="height: <%= @year_totals[(@start_date+n.months).month][:completed][:total]/ceiling.to_f*100 %>%;" >
+      <div style="height: <%= @year_totals[(@start_date+n.months).month][:completed][:total_intensity]/(@year_totals[(@start_date+n.months).month][:completed][:total] - @year_totals[(@start_date+n.months).month][:completed][:total_intensity]).to_f*100%>%;" class="graph_bar">
+      </div>
+    </div>
+    </div>
+  </div>
+<% end %>
+</div>
+<div class="edit_atp_month_container">
+	<% 12.times do |n| %>
+		<input type="text"onkeypress="return event.charCode >= 48 && event.charCode <= 57"  value="<%= planned_hours[n] == 0 ? "" : planned_hours[n] %>" placeholder="0" data-month="<%= n %>" />
+	<% end %>
+</div>
+<div class="x">
+<% 12.times  do |n| %>
+  <div class="x_month" ><%= (@start_date+n.months).strftime("%b") %></div>
+<% end %>
+</div>
+</div>
+
+
+<div class="sub_graph_container">
+	<%= content_tag "div", id: "sub_graph_week", class: "summary_graph" do %>
+
+	<% completed_width = @total_hours_completed_year/60.0/@annual_training_plan.total_planned_hours.to_f*100 %>
+	<% if completed_width <= 100 %>
+	<% planned_width = 100 - completed_width %>
+	<% else %>
+	<% planned_width = 0 %>
+	<% completed_width = 100 %>
+	<% end %>
+	<div class="total_hours_graph"><div class="hours_inside_text" id="hours_inside_text" style="width:<%= completed_width %>%;"><span class="total_hours_inside_large"><span class="hours_completed_total" data-completed="<%= @total_hours_completed_year.to_f/60.0 %>"><%= @total_hours_completed_year/60 %></span><span class="total_hours_inside_small"> hrs</span> <%= @total_hours_completed_year%60 %><span class="total_hours_inside_small"> min</span></span></div><div class="total_hours_inside" style="width:<%= planned_width %>%;" id="planned_hours_measure"><span class="planned_hours_measure"><span class="total_planned_hours_bar"><%= @annual_training_plan.total_planned_hours %></span><span class="total_hours_inside_small_size"> atp</span></span></div></div>
+
+<% total = 0 %>
+<% @sport_times.each do |sport_time| %>
+	<% total += sport_time[1] %>
+<% end %>
+
+
+	<div class="activities_table_container">
+	<table class="activities_table">
+		<% @sport_times.each do |sport_time| %>
+		<% unless sport_time[1] == 0 %>
+		<tr>
+			<td><%= sport_time[0] %></td><td><%= (sport_time[1]/60)/60 %> <span>hrs</span> <%= sport_time[1]/60%60 %> <span>min</span></td><td><%= (sport_time[1].to_f/total.to_f*100).round %>%</td>
+		</tr>
+		<% end %>
+		<% end %>
+	</table>
+</div>
+
+
+<% end %>
+	<%= content_tag "div", id: "dashboard_feel", class: "right_sub_graph", data: { feel: @feel.to_a, sleep: @sleep_quality.to_a} do %>
+	<% end %>
+<%= content_tag "div", id: "sub_graph_sports", class: "right_sub_graph hidden", data: { times: @sport_times} do %>
+<% end %>
+<%= content_tag "div", id: "sub_graph_sports2", class: "hidden", data: { times: @sport_times} do %>
+<% end %>
+
+</div>
+</div>
+</div>
+<% @total_planned_week.size.times do |n| %>
+	<% unless(@total_planned_week[n] + @zone_totals_week[n].sum) == 0 %>
+	<div class="month_sum_container display_none" id="<%= n.to_s %>_week_column"><div class="triangles_purple"></div>
+	<div class="week_load_summary">
+		<%= time_cleanup((@zone_totals_week[n].sum)/60)%>
+		<div class="sub_text_load">COMPLETED</div>
+		<%= time_cleanup(@total_planned_week[n]/60) %>
+		<div class="sub_text_load">PLANNED</div>
+		<% unless (@zone_totals_week[n].sum - @zone_totals_week[n][0]) == 0 %>
+		<table class="zones_week">
+			<tr>
+				<th>ZONE</th>
+				<th>MM:SS</th>
+			</tr>
+			<% x = 1 %>
+			<% @zone_totals_week[n].each do |time| %>
+			<% unless time == 0 || x == 1 %>
+			<tr>
+				<td class="border_right_week"><%=  x.to_s %></td><td><%=time_cleanup(time) %></td>
+				<% x += 1 %>
+			</tr>
+			<% end %>
+			<% x += 1 %>
+			<% end %>
+		</table>
+		<% end %>
+	</div>
+	</div>
+	<% end %>
+<% end %>
+
+<% 12.times do |n| %>
+	<% unless (@year_totals[(@start_date+n.months).month][:completed][:total]) == 0 %>
+	<div class="month_sum_container display_none" id="<%= (@start_date+n.months).to_s %>_column"><div class="triangles"></div>
+	<div class="month_summary_hours" data-completed="<%= @year_totals[(@start_date+n.months).month][:completed][:total]/60.0/60.0 %>" data-month="<%= n %>"><%= time_cleanup((@year_totals[(@start_date+n.months).month][:completed][:total])/60) %><div class="sub_text_summary">COMPLETED</div>
+	<span class="planned_total"><%= time_cleanup(planned_hours[n].to_i*60) %></span>
+	<div class="sub_text_summary">
+		PLANNED
+	</div>
+	<% total_intensity = @year_totals[(@start_date+n.months).month][:completed][:total_intensity] %>
+	<% unless total_intensity == 0 %>
+	<table class="zones_atp">
+		<tr>
+			<th>ZONE</th>
+			<th>HH:MM</th>
+		</tr>
+		<% intervals = @year_totals[(@start_date+n.months).month][:completed].dup %>
+		<% intervals.delete(:total) %>
+		<% intervals.delete(:total_intensity) %>
+		<% intervals[:total_zones].each_with_index do |time, index| %>
+		<% unless index == 0  || time == 0 %>
+		<tr>
+			<td class="border_right"><%=  (index+1).to_s %></td><td><%=time_cleanup(time/60) %></td>
+		</tr>
+		<% end %>
+		<% end %>
+		<% end %>
+	</table>
+	</div>
+	</div>
+
+	<% end %>
+<% end %>
+</br>
+</div>
+<%= form_for @annual_training_plan, :remote => true, :html => {:class => "atp_form"} do |f| %>
+<%= f.hidden_field :total_planned_hours %>
+<%= f.hidden_field :start_year %>
+<%= f.hidden_field :user_id %>
+<%= f.hidden_field :id %>
+<%= f.hidden_field :month_hours %>
+
+<% end %>

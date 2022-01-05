@@ -1,0 +1,7 @@
+<% link_value = ("on" if @preference.copy_workouts.downcase == "off") || "off" %>
+<% color_link_value = ("on" if @preference.color_workouts.downcase == "off") || "off" %>
+
+$('#interface_toggle_copy_workouts').attr('href', "<%= escape_javascript(preference_path(@preference.id, :preferences => {:copy_workouts => link_value} )) %>")
+
+$('#interface_toggle_color_workouts').attr('href', "<%= escape_javascript(preference_path(@preference.id, :preferences => {:color_workouts => color_link_value} )) %>")
+

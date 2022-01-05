@@ -1,0 +1,113 @@
+<% link = '<span class="icon-cancel-circled close-message"></span>' %>
+$('.messages_workout').append('<div class="coach_comments" id="workout_message_<%= @message.id %>"><%= link_to link.html_safe,  @message,  method: :delete, :remote => true, data: { confirm: "Delete this comment?" } %><div class="coach_comments_body"><div class="coach_comments_name"><%= User.find(@message.user_id).first_name+" "+User.find(@message.user_id).last_name %></div><%= @message.message %></div></div>')
+//paint_coach_comments()
+
+$('.message_field').val('')
+
+scroll_bottom_messages()
+
+
+//comment functionality for dashboard
+//check to see if on dashboard
+if($('.cal_header').size() == 0){
+if($('#workout_comments_<%= @message.workout_id %>').find('.coach_comments_name_coach').last().html() == "<%= User.find(@message.user_id).first_name[0]+User.find(@message.user_id).last_name[0] %>"){
+  var initials = ""
+}
+else{
+  var initials = "<div class='coach_comments_name_coach'><%= User.find(@message.user_id).first_name[0]+User.find(@message.user_id).last_name[0] %></div>"
+}
+
+$('#workout_comments_<%= @message.workout_id %>').append('<div class="dashboard_comment_coach hidden_coach_comment">'+initials+' <div class="dashboard_sub_comment_coach"><%= @message.message %></div></div>')
+$('.hidden_coach_comment').css('max-height')
+$('.hidden_coach_comment').removeClass('hidden_coach_comment')
+}
+//add comment to side_bar_flex and check if on dashboard view
+if($('.cal_header').size() > 0){
+//athlete specific animations:
+if($('#workout_comments_<%= @message.workout_id %>').find('.coach_comments_name_coach').last().html() == "<%= User.find(@message.user_id).first_name[0]+User.find(@message.user_id).last_name[0] %>"){
+  var initials = ""
+}
+else{
+  var initials = "<div class='coach_comments_name_coach'><%= User.find(@message.user_id).first_name[0]+User.find(@message.user_id).last_name[0] %></div>"
+}
+
+$('#workout_comments_<%= @message.workout_id %>').append('<div class="comment_container"><div class="dashboard_comment_coach hidden_coach_comment">'+initials+' <div class="dashboard_sub_comment_coach"><%= @message.message %></div></div></div>')
+$('.hidden_coach_comment').css('max-height')
+$('body').append('<div class="dashboard_comment_coach ghost_comment">'+initials+' <div class="dashboard_sub_comment_coach"><%= @message.message %></div></div>')
+var comment_height = $('.ghost_comment').height()
+$('.ghost_comment').remove()
+$('.comment_container').height(comment_height)
+scroll_bottom_messages()
+$('.hidden_coach_comment').removeClass('hidden_coach_comment')
+var cnt = $(".comment_container").contents();
+setTimeout(function(){
+  $(".comment_container").replaceWith(cnt);
+},300)
+
+
+//sidebar add comment logic
+
+var date = Date.parse('<%= @date %>')
+<% user = User.find(@message.user_id) %>
+var comment = '<div class="comment_wrapper hidden_comment workout_<%= @message.workout_id %>"><div class="comment" id="message_<%= @message.id %>" data-date="<%= @date %>" data-workout-id="<%= @message.workout_id %>"><div class="coach_comments_name"><%= user.first_name+" "+user.last_name %></div><span class="comment_text"><%= @message.message %></span></div></div>'
+if($('.comment').size() > 0){
+  var total = $('.comment').length;
+  $('.comment').each(function(index){
+    var comment_date = Date.parse($(this).data('date'))
+    if(date.getTime() >= comment_date.getTime() ){
+      //if the date matches and the workout id matches put on top
+      if(date.getTime() == comment_date.getTime() && $(this).data('workout-id') == '<%= @message.workout_id %>'){
+        $(this).parent().before(comment)
+        $('.hidden_comment').css('max-height')
+        setTimeout(function(){
+          $('.hidden_comment').css('max-height', $('.hidden_comment').first().prop('scrollHeight'))
+        },1)
+        return false;
+      }
+      //if the date matches but the workout id is greater than the comment id
+      if(date.getTime() == comment_date.getTime() && $(this).data('workout-id') < '<%= @message.workout_id %>'){
+        $(this).parent().before(comment)
+        $('.hidden_comment').css('max-height')
+        setTimeout(function(){
+          $('.hidden_comment').css('max-height', $('.hidden_comment').first().prop('scrollHeight'))
+        },1)
+        return false;
+      }
+      //if the date is greater put before
+      if(date.getTime() > comment_date.getTime()){
+        $(this).parent().before(comment)
+        $('.hidden_comment').css('max-height')
+        setTimeout(function(){
+          $('.hidden_comment').css('max-height', $('.hidden_comment').first().prop('scrollHeight'))
+        },1)
+        return false;
+      }
+    }
+
+    if (index === total - 1) {
+        $(this).parent().after(comment)
+        $('.hidden_comment').css('max-height')
+        setTimeout(function(){
+          $('.hidden_comment').css('max-height', $('.hidden_comment').first().prop('scrollHeight'))
+        },1)
+    }
+  })
+}
+else{
+  $('.comments').append(comment)
+  $('.hidden_comment').css('max-height')
+  setTimeout(function(){
+    $('.hidden_comment').css('max-height', $('.hidden_comment').first().prop('scrollHeight'))
+  },1)
+
+
+}
+setTimeout(function(){
+  $('.hidden_comment').removeClass('hidden_comment').removeAttr("style")
+}, 700)
+}
+setTimeout(function(){
+  $('.dashboard_wrapper textarea, .athlete_comment_messenger').removeAttr('style')
+  autosize($('.dashboard_wrapper textarea, .athlete_comment_messenger'));
+
+},3)

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>rekord</title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+
+
+  <%= csrf_meta_tag %>
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="<%= asset_path 'rekord180.png' %>">
+	
+</head>
+<body>
+<div id="top_bar" >
+<div id="mid_bar" ><h1>rekord</h1>
+<div id="menu" >
+	<% if user_signed_in? %>
+
+		<%= link_to ('<span class="main_menu_highlight">'+Friendship.pending_requests(@user.id).size.to_s + '</span> Friend '+'Request'.pluralize(Friendship.pending_requests(@user.id).size)).html_safe, preferences_path(:tab => "friends"), :remote=> true, "data-type" => :html, :class=> 'preferences_link requests_link'  if Friendship.pending_requests(@user.id).size > 0 %>
+	<% if current_user.user_type == "Coach" %>
+	<a href="#" id="search"><span id="white">Athletes</span></a>
+	<% end %>
+	<% if current_user.user_type == "Coach" %>
+	<%= link_to 'Plans', '/plans', :remote => true, :class => 'plans_link' %>
+	<% end %>
+	<% if current_user.user_type == "Coach" %>
+	<%= link_to 'Dashboard', 'coaches/dashboard/true',  :remote=> true,"data-type" => :html, :class=> 'dashboard_link' %>
+	<% else %>
+	<%= link_to('Calendar', "/log_entries/get_calendar/" + current_user.id.to_s+"/"+(Time.now.at_midnight).to_s, :remote => true, "data-type" => :script, :class => "get_the_cal") %>
+	<% end %>
+	<%= link_to 'Preferences', preferences_path(:tab => "profile"), :remote=> true, "data-type" => :html, :class=> 'preferences_link' %>
+	<% end %>
+
+<% if user_signed_in? %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+
+  </div>
+<div id="search_field">
+	<%= text_field_tag(:search_name, nil, :autocomplete => "off" ) %>
+	<div id="names_list">
+	</div>
+</div>
+</div>
+</div>
+<div id="content" >
+
+<%= yield %>
+
+</div>
+<div id="confirm_paste" class="select_box"><div class="button" id="add_to_existing">Add to Existing</div><div class="button_red" id="overwrite">Overwrite</div></div>
+</body>
+</html>

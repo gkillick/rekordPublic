@@ -1,0 +1,141 @@
+	<div class="dashboard_top_left">
+		<div class="top_dashboard_graph_container">
+	<div class="feel_name center_sports grey margin_bottom_10" style="display:inline-block">team averages</div><div class="interface_button_light team_average" style="opacity:0;">team average</div><div class="interface_button_light_toggle range_selector">
+
+		<% if @preferences.chart_range == "week" %>
+			<% week = "selected_toggle" %>
+			<% month = "not_selected_toggle" %>
+		<% else %>
+			<% month = "selected_toggle" %>
+			<% week = "not_selected_toggle" %>
+		<% end %>
+
+		<%= link_to(('<span class="'+month+' interface_button_light_toggle_item toggle_left">month</span>').html_safe, preference_path(@preferences.id, :preferences => {:chart_range => "month"} ), :method => :put, :remote => true, :id => "interface_toggle_month")%><%= link_to(('<span class="'+week+' interface_button_light_toggle_item toggle_right">week</span>').html_safe, preference_path(@preferences.id, :preferences => {:chart_range => "week"} ), :method => :put, :remote => true, :id => "interface_toggle_week")%></div>
+		</div>
+	<% if @feel.to_a.size && @sleep_quality.to_a.size == 0 %>
+	<div class="no_feel_data"><div class="no_feel_data_container"><div class="no_feel_data_center">no data to display</div></div></div>
+	<% end %>
+	<%= content_tag "div", id: "dashboard_feel", class: "dashboard_top_left_graph", data: { feel: @feel.to_a, sleep: @sleep_quality.to_a} do %>
+	<% end %>
+	<% if @feel_list.size != 0 %>
+	<div class="outliers_table">
+
+		<table class="outliers">
+			<tr>
+				<th class="border_right_table name_feel_graph"></th>
+				<th class="seven_day_width border_right_table">7 day load</th>
+				<th class="border_right_table number_width">Feel</th>
+				<th class="number_width">Trend</th>
+			</tr>
+		</table>
+		<div class="list_scroll">
+
+		<table class="outliers">
+
+			<% @feel_list.each do |feel| %>
+			<% unless feel[-3][-1] == 110 %>
+			<% request = "/log_entries/get_calendar/" + feel[-1].id.to_s+"/"+(Time.now.at_midnight).to_s %>
+			<% name = feel[-1].first_name + " "+ feel[-1].last_name %>
+			<% cal_link = '<span class="icon-calendar icon_calendar_dashboard"></span>'%>
+			<% feel_data = feel.slice(0..-3) %>
+			<% feel_data.each do |item| %>
+			<% item[1] = item[1]*10 %>
+			<% end %>
+			<tr data-feel="<%= feel_data %>" data-sleep="<%= User.find(feel[-1].id.to_s).sleep(32) %>" data-athlete-name="<%= name.html_safe %>">
+				<td class="border_right_table name_feel_graph"><div class="feel_link_container"><div class="outliers_table_circle feel_gradient" style="background-position:0% <%= feel[-3][-1] %>%;"></div><span class="dashboard_name"><%= name %></span></div><%= link_to(cal_link.html_safe, request, :remote => true, "data-type" => :script, :class => "get_the_cal grey") %> </td>
+				<td class="seven_day_width border_right_table table_stat" ><%= time_cleanup(User.find(feel[-1].id.to_s).hours(7)["total_minutes"]/60) %></td>
+				<td class="border_right_table number_width table_stat"><%= feel[-3][-1]/10.to_i %><t/d>
+					<% if feel[-2] < 0 %>
+					<% trend = "" %>
+					<% else %>
+					<% trend = "+ " %>
+					<% end %>
+				<td class="number_width table_stat"><%= trend %><%= feel[-2] %></td>
+			</tr>
+			<% end %>
+			<% end %>
+		</table>
+		</div>
+	</div>
+	<% end %>
+
+	</div>
+		<div class="dashboard_entries">
+			<div class="center_sports grey dashboard_top_margin_entries">Recently logged</div>
+			<% total_workouts = 0 %>
+			<% @workouts.each do |workout| %>
+			<% unless workout.total_completed == 0 %>
+				<% total_workouts += 1 %>
+			<% end %>
+			<% end %>
+			<% if total_workouts == 0 %>
+			<div class="dashboard_entries_none">
+				<div class="no_feel_data_center">no recent entries</div>
+			</div>
+			<% else %>
+			<div class="dashboard_entries_container">
+			<div class="dashboard_entries_scroll">
+			<% @workouts.each do |workout| %>
+			<% unless workout.total_completed == 0 %>
+			<% request = "/log_entries/get_calendar/" + workout.log_entry.athlete.id.to_s+"/"+(Time.now.at_midnight).to_s %>
+
+			<div class="dashboard_entry">
+<%= link_to(request, :remote => true, "data-type" => :script, :class => "get_the_cal") do %>
+			<div class="comment_wrapper_dashboard">
+				<div class=" date_title_dashboard_right"><% if workout.log_entry.date == Date.today %>
+				 Today
+				<% elsif workout.log_entry.date == (Date.today - 1.day) %>
+				 Yesterday
+				<% else %>
+				<%= workout.log_entry.date.strftime("%b %d") %>
+				<% end %>
+			</div>
+				<span class="dashboard_entry_name"><%= workout.log_entry.athlete.first_name %> <%= workout.log_entry.athlete.last_name %></span>
+				<div class="dashboard_entry_time">
+					<%= time_cleanup(workout.total_completed/60) %>
+					<div class=" date_title_dashboard"><%= workout.activity_id %>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="dashboard_entry_comments" id="workout_comments_<%= workout.id%>">
+				<% if workout.messages.size > 0 %>
+					<% last_id = 0 %>
+					<% workout.messages.each do |message| %>
+					<% unless message == nil || message == ""%>
+					<% if message.user_id == current_user.id %>
+					<div class="dashboard_comment_coach">
+					<% if last_id != message.user_id %><div class="coach_comments_name_coach"><%= User.find(message.user_id).first_name[0]+User.find(message.user_id).last_name[0] %></div> <% end %><div class="dashboard_sub_comment_coach"><%= message.message %></div>
+				</div>
+				<% else %>
+				<div class="dashboard_comment">
+					<% if last_id != message.user_id %><div class="coach_comments_name"><%= User.find(message.user_id).first_name[0]+User.find(message.user_id).last_name[0] %></div><% end %> <div class="dashboard_sub_comment"><%= message.message %></div>
+			</div>
+				<% end %>
+				<% last_id = message.user_id %>
+					<% end %>
+					<% end %>
+					<% end %>
+			</div>
+			<% end %>
+			<div class="show_comment">add comment</div>
+			<div class="add_comment_dashboard">
+			<div class="dashboard_wrapper">
+				<% new_message = workout.messages.build(:user_id => current_user.id) %>
+				<%= form_for new_message, :remote => true do |message| %>
+					<%= message.hidden_field :workout_id, :value => new_message.workout_id %>
+					<%= message.hidden_field :user_id, :value => @user.id %>
+				<%= message.text_area :message, rows: 1, class: "dashboard_new_comment message_field", placeholder: "add comment"  %>
+				<%= message.submit "save", {:class => "hidden"} %>
+			<% end %>
+			</div>
+			</div>
+			</div>
+
+			<% end %>
+			<% end %>
+			</div>
+		</div>
+			<% end %>
+		</div>

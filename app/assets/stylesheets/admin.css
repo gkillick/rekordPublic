@@ -1,0 +1,19 @@
+.admin_table  tr:nth-child(even) {background: #f9f9f9}
+.admin_table{
+	border-collapse: collapse;
+}
+.admin_table tr td{
+
+		padding:10px;
+		text-align:center;
+}
+.admin_table tr th{
+
+		padding:10px;
+		text-align:center;
+}
+.wrapper_admin{
+	width:100%;
+	height:100%;
+	overflow-y:scroll;
+}

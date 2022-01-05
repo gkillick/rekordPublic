@@ -1,0 +1,123 @@
+<% if @preferences.athlete_toggle == false || @user.user_type == "Athlete" %>
+	<% plans = "" %>
+	<% athletes = "display:none" %>
+	<% plans_selected = "selected_toggle_item" %>
+	<% athletes_selected = "" %>
+	<% plans_background = "background:#269af3" %>
+	<% athletes_background = "" %>
+<% else %>
+	<% plans = "display:none" %>
+	<% athletes = "" %>
+	<% plans_selected = "" %>
+	<% athletes_selected = "selected_toggle_item" %>
+	<% plans_background = "" %>
+	<% athletes_background = "background:#269af3" %>
+<% end %>
+
+<div id="side_bar" class="interface_light <%= open %>" style="<%= side_bar_style %>">
+<div class="side_bar_flex">
+<div class="side_bar_plan_view hidden transparent">
+	<%= text_field_tag("search_all_plans", nil, :autocomplete => :off, placeholder: "search plans..") %>
+	<%= render "plans/plan_list" %>
+
+	<div class="plan_buttons">
+		<% if @plans.size > 0 %>
+		<% plan_id = @plans.first.id.to_s %>
+		<% else %>
+		<% plan_id = "" %>
+		<% end %>
+		<%= link_to( "new plan", 'plans/make_plan', :remote => true, :class => "plan_button plan_button_new") %><%= link_to( "delete plan", 'plans/destroy/'+current_user.id.to_s+'/plan_'+plan_id, :remote => true, data: { confirm: "Delete selected plan?" }, :class => "plan_button_delete", method: :delete) %>
+	</div>
+
+	<div class="plan_stats">
+		<div class="January_stats fading_label" id="side_bar_plan_stats_label" style="text-align:center; width:100%; margin-bottom:5px; margin-top:2px;">Zones</div>
+		<table class="zone_table">
+			<% intensity_totals = @intensity_plan %>
+			<% if intensity_totals.inject(0){|sum,x| sum + x } > 0 %>
+			<% first_row_class = "active "%>
+			<% else %>
+			<% first_row_class = "" %>
+			<% end %>
+			<% 5.times do  |n| %>
+			<% if intensity_totals[n] == 0 %>
+			<% zone_class = "" %>
+			<% else %>
+			<% zone_class = "active" %>
+			<% end %>
+			<tr class="<%= zone_class %>" id="row_for_zone_<%= (n+1).to_s %>"><td class="zone_number" style="width:10%"><div class="row_spacer"><%= (n+1).to_s %></div></td><td class="tooltip_element" data-tooltip="<%= time_clean_seconds_text(intensity_totals[n]) %>"><div class="row_spacer" id="zone_container_<%= (n+1).to_s %>"><div class="side_zones_bar" style="width:<%= percentage_array(intensity_totals,n).to_s %>%" ></div><div class="side_zones_bar_2" style="width:<%= (100 - percentage_array(intensity_totals,n)).to_s %>%"></div></div></td></tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+<div class="plan_to_hide side_bar_flex_stats">
+
+<div id="plans_search_sidebar" class="<%= 'hidden' if @user.user_type == "Athlete" %>" style="<%= plans %>">
+<div class="search_field_side_bar">
+<div id="plan_search_container"><%= text_field_tag("search_plans", "search plans..", :autocomplete => :off) %></div></div>
+<div class="plan_list">
+	<div class="the_plans"><div class="plan_container">
+	<%= render "plans/copy_history" %>
+	</div>
+	<div id="plan_search_links"><span><%= link_to 'view all', '/plans', :remote => true, :class => 'plans_link' %></span></div>
+	</div>
+</div>
+</div>
+<div id="athlete_search_sidebar" style="<%= athletes %>">
+<div class="search_field_side_bar">
+<div id="plan_search_container"><%= text_field_tag("search_athletes", "search athletes..", :autocomplete => :off) %></div>
+</div>
+<div class="athlete_list">
+	<% @athletes.each do |athlete| %>
+	<%= link_to( "/log_entries/get_calendar/"+athlete.id.to_s+"/"+(Time.now.at_midnight).to_s, :remote => true, "data-type" => :script, :class => "get_the_cal")  do %>
+	<div class="athlete_listed interface_medium text_dark" id="list_athlete_<%= athlete.id %>"><%= athlete.first_name + " " + athlete.last_name %></div>
+	<% end %>
+	<% end %>
+</div>
+</div>
+<div class="toggle_container">
+<div class="interface_toggle interface_medium <%= "hidden" if @user.user_type != "Coach" %>" id="athlete_plan_toggle">
+	<div class="toggle_item display_athletes <%= athletes_selected%> " style="<%= athletes_background %>">Athletes</div>
+	<div class="toggle_item display_plans <%= plans_selected %>" style="<%= plans_background %>">Plans</div>
+</div>
+</div>
+<% if @user.user_type == "Coach" %>
+<div class="transparent calendar_only_item side_bar_cal_item side_bar_block copy_toggle <%= 'hidden' if @user.user_type == "Athlete" %>">
+<div class="block_text">Click and drag to copy workouts.</div><%= toggle("copy_workouts", @preferences) %>
+</div>
+
+<div class="side_bar_button_container">
+		<%= link_to('New Plan', 'plans/make_plan', :remote => true, :class => 'side_bar_button hidden new_plan') %>
+</div>
+</div>
+<% end %>
+
+<!-- this is after the plans and athletes toggle -->
+<% if @preferences.comments == false %>
+<% flex_class = "comments_closed" %>
+<% title_class = "comments_closed_title" %>
+<% else %>
+<% flex_class = "" %>
+<% title_class = "" %>
+<% end %>
+
+<div class="plan_to_hide transparent calendar_only_item side_bar_block_clean_2"><div class="comments_title <%= title_class %>">recent comments</div></div>
+
+<div class="plan_to_hide transparent calendar_only_item side_bar_flex_2 comments <%= flex_class %>">
+
+
+
+
+
+
+	</div>
+
+
+	<div id="toggle" class="toggle_light">
+		<% if open == 'side_bar_open' %>
+		<span class="icon-chevron-left"></span>
+		<% else %>
+		<span class="icon-chevron-right"></span>
+		<% end %>
+	</div>
+</div>
+</div>

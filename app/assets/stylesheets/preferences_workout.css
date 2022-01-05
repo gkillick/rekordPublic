@@ -1,0 +1,118 @@
+.custom_field_settings_container{
+	width:550px;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	background:white;
+	border-radius:5px;
+	border:1px solid #eaebed;
+
+}
+.no_custom{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align:center!important;
+	color:#c4c4c4;
+	font-size:20px;
+
+}
+.custom_field_settings_bar{
+	background: #53c4c2; /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  #53c4c2 0%, #71ddda 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#53c4c2), color-stop(100%,#71ddda)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  #53c4c2 0%,#71ddda 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  #53c4c2 0%,#71ddda 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  #53c4c2 0%,#71ddda 100%); /* IE10+ */
+	background: linear-gradient(135deg,  #53c4c2 0%,#71ddda 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#53c4c2', endColorstr='#71ddda',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+	text-align:left;
+}
+
+.custom_field_settings_content{
+	text-align:left;
+
+}
+.bold_title{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	letter-spacing:1px;
+	font-size: 13px;
+	font-weight: bold;
+
+}
+.custom_field_choices{
+	opacity:0;
+	height:0px;
+	border-bottom:1px solid #ececec;
+}
+
+
+.custom_field_choice{
+	display:inline-block;
+	position:relative;
+	width:100px;
+	border-right:1px solid #ececec;
+	text-align:center;
+	height:100px;
+
+}
+
+.custom_field_choice:hover .custom_field_choice_content{
+	color:black;
+}
+.custom_field_choice_content:hover{
+	color:black;
+}
+
+.custom_field_choice_content{
+	transition: color 0.3s ease;
+	color:#4d4d4d;
+	font-size:25px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+	
+}
+.choice_label{
+	position:absolute;
+	padding:5px;
+	background:#f8f8f8;
+	bottom:0px;
+	right:0;
+	left:0;
+	text-align:center;
+}
+.custom_field_settings_workout{
+	padding:20px;
+	
+}
+.custom_field_settings_day{
+	padding:20px;
+	border-top: 1px solid #ececec;
+}
+.add_custom_field{
+	font-size:20px;
+	font-weight:bold;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius:50%;
+	background:black;
+	color:white;
+	width:25px;
+	height:25px;
+	line-height:20px;
+	margin-bottom:10px;
+}
+.icon-plus-circle_big{
+font-size:30px; color:#8a8a8a; line-height:30px; display:inline-block; height:30px; margin-bottom:15px; width:30px; transition: color 0.3s ease; cursor:pointer;
+}
+.icon-plus-circle_big:hover{
+	color:black;
+}
+.settings_workout{
+	
+}

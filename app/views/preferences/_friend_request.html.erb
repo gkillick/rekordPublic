@@ -1,0 +1,16 @@
+<% image_link = "<div class='no_image_container'><div class='no_image'></div></div>" %>
+
+	<li id="friend_accepted_id_<%= friend.id.to_s %>" data-fullname="<%= friend.first_name + " "+ friend.last_name %>">
+		<div class="friend_wrapper"><%= image_link.html_safe %><div class="profile_list_name"><%= friend.first_name %> <%= friend.last_name %></br><span class="profile_type grey"><%= friend.user_type %></span></br>
+			<%= link_to("remove friend", 'friendships/'+friend.id.to_s, :remote => true, :method => :delete, :class => "box_link_grey") %></div>
+		
+		
+		<div class="right_permission_list">
+
+			
+			
+		</div>
+		
+		
+		</div>
+	</li>

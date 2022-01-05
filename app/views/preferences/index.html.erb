@@ -1,0 +1,20 @@
+<div class='preferences_header'>
+	<div class="preferences_nav">
+		<div class="preferences_nav_item <%= "selected_preference" if @tab == 'profile' %>" data-link="profile" >Profile</div>
+		<div class="preferences_nav_item <%= "selected_preference" if @tab == 'friends' %>" data-link="friends" >Friends</div>
+		<div class="preferences_nav_item" data-link="settings" >Settings</div>
+	</div>
+	<div class='close_modal'>
+	</div>
+</div>
+<div class="preferences_content">
+<div class="preferences_size">
+<%= render "profile" %>
+</div>
+
+<%= render "friendship_list" %>
+<div class="preferences_nav_content" id="preferences_settings" style="<%= 'display: none;' if @tab != "settings" %>">
+<%= render "settings"%>
+</div>
+</div>
+</div>

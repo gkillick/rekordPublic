@@ -1,0 +1,55 @@
+<% if @friendship.status == "pending" %>
+	<% if @friendship.friend_id == @user.id %>
+      <% friend_link =  link_to_accept_friend("accept friend",@friendship.id,"accepted", "accept") %>
+    <% else %>
+      <% friend_link = link_to_remove_friend("cancel request", @friend.id, "remove") %>
+    <% end %>
+<% else %>
+    <% friend_link = link_to_remove_friend("remove friend", @friend.id, "remove") %>
+<% end %>
+
+$('#search_item_friend_<%= @friend.id.to_s %>').find('.friend_status_link').first().html('<%= friend_link %>')
+
+<% if @friendship.status == "accepted" %>
+if($('.no_friends').size() == 1){
+	$('.no_friends').first().remove()
+	$('.friendship_list').append("<%= escape_javascript(render("preferences/friend_permissions", :friend => @friend)) %>")
+}
+else{
+	$('.friendship_list').append("<%= escape_javascript(render("preferences/friend_permissions", :friend => @friend)) %>")
+}
+$('#pending_friend_id_<%= escape_javascript(@friend.id.to_s) %>').remove()
+if($('#friend_request_list').find('ul').first().children('li').size() == 0 ){
+	$('.pending_requests').remove()
+	$('#friends_search_form').removeClass('pending_request')
+	$('.friend_request_container').remove()
+}
+
+var mylist = $('.friendship_list');
+var listitems = mylist.children('li').get();
+listitems.sort(function(a, b) {
+   return $(a).attr('data-fullname').toUpperCase().localeCompare($(b).attr('data-fullname').toUpperCase());
+})
+$.each(listitems, function(idx, itm) { mylist.append(itm); });
+$('#friend_accepted_id_<%= escape_javascript(@friend.id.to_s) %>').css('opacity','0')
+var container = $('.friendship_list_container')
+    scrollTo = $('#friend_accepted_id_<%= escape_javascript(@friend.id.to_s) %>');
+	container.scrollTop(
+	    scrollTo.offset().top - container.offset().top + container.scrollTop()
+	);
+	$('#friend_accepted_id_<%= escape_javascript(@friend.id.to_s) %>').animate({
+		opacity:1
+	},300)
+
+
+<% end %>
+
+<% if @request_count > 0 %>
+	<% requests_link_pref = (@request_count.to_s + ' friend '+'request'.pluralize(@request_count)).html_safe %>
+	<% requests_link = ('<span class="main_menu_highlight">'+@request_count.to_s + '</span> Friend '+'Request'.pluralize(@request_count)).html_safe %>
+	$('.requests_link').html("<%= escape_javascript(requests_link) %>")
+	$('.inside_pending_button').html("<%= escape_javascript(requests_link_pref) %>")
+
+<% else %>
+	$('.requests_link').remove()
+<% end %>

@@ -1,0 +1,20 @@
+<% if f.object.zone != 1 %>
+	<% intensity_row = "intensity_row "%>
+<% else %>
+	<% intensity_row = "hidden"%>
+<% end %>
+<tr class="interval_zone_<%= f.object.zone.to_s %> <%= intensity_row %> zone_row">
+	<td><%= f.text_field :multiplier, :size => 2, :maxlength => 2, :placeholder => '0', :autocomplete => "off", :class => "mobile_input center_input multiplier time_respond_mobile", :pattern => "[0-9]*", :type => "tel" %></td>
+	<td><div class="input_mobile_container"><%= f.text_field :sub_duration, :maxlength => 5, :size => 6, :placeholder => "MM:SS", :autocomplete => "off", :class => "add_colon_field mobile_input center_input format_time_mobile duration_field_narrow sub_duration time_respond_mobile ", :pattern => "[0-9]*", :type => "tel" %></div></td>
+	<td><div class="input_mobile_container"><%= f.text_field :rest, :size => 6, :maxlength =>5, :placeholder => "MM:SS",  :autocomplete => "off", :class => "add_colon_field mobile_input format_time_mobile center_input duration_field_narrow rest_duration", :pattern => "[0-9]*", :type => "tel" %></div><%= f.text_field :duration, :size => 6,  :autocomplete => "off", :class => "total_duration_interval time_respond_mobile hidden " %></td>
+	<td>
+		<% if the_zone > 1 %>
+			<%= f.select :zone, options_for_select([['2'],['3'],['4'],['5']], f.object.zone || '3'), {}, { class: "custom_select_mobile"}  %>
+		<% else %>
+			<%= f.select( :zone, [['1'],['2'],['3'],['4'],['5']], {:selected => "1"}, {:class =>"custom_select  zone_select"} ) %>
+		<% end %>
+	</td>
+	<td>
+	<%= link_to_remove_fields_mobile("hi", f) %>
+	</td>
+</tr>

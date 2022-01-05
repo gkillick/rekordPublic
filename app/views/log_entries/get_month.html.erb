@@ -1,0 +1,7 @@
+<div class="month_summary">
+<% @zone_totals.size.times do |n| %>
+  <% unless @zone_totals[n] == 0 %>
+    <span class="sum_zone">Zone<%= (n+1) %></span> <span class="sum_time"><%= time_clean_seconds(@zone_totals[n]).html_safe %></span></br>
+  <% end %>
+<% end %>
+</div>

@@ -1,0 +1,9 @@
+$('#edit_plan_container').html("<%= escape_javascript(render('edit_plan')) %>")
+paint_workouts()
+//auto_size_text($('.plan_title_edit'))
+$('#right_container').fadeIn()
+$('.plan_button_delete').removeClass('disabled')
+
+<%= render :partial => 'update_plan_stats', :locals => {} %>
+
+prepare_plan()

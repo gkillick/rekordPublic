@@ -1,0 +1,47 @@
+<div class="preferences_inner_wrapper">
+<%= form_for @preferences, :remote => true, :html => {:id => 'start_date_field'} do |f| %>
+<div class="preferences_cell"><div class="preferences_inner_cell">
+<span class="sub_title">Sport</span></br>
+<% sports = Rails.application.config.sports.dup %>
+<% unless f.object.sport == "" %>
+	<% unless sports.include?(f.object.sport) %>
+		<% sports.push(f.object.sport).sort_by!{ |m| m[0].downcase } %>
+	<% end %>
+<% end %>
+<%= content_tag :div, :class => "sport_container", :data => {:sports => Rails.application.config.sports.dup.to_json, :activities => Rails.application.config.sports_activities.dup.to_json }  do %>
+
+<%= f.select :sport, options_for_select(sports, selected: f.object.sport)  %>
+<% end %>
+
+
+</div><div class="preferences_inner_cell"><span class="sub_title">Start Date</span></br>
+
+<div class="sport_container">
+<%= f.text_field :start_date, :value => (f.object.start_date.strftime('%B %d') if f.object.start_date), :id => "datepicker" %>
+
+</div>
+</div>
+</div>
+
+</br>
+</br>
+</br>
+
+<div class="preferences_cell activities_cell"><span class="sub_title">Edit Activites</span></br>
+	<% if @preferences.activities == nil || @preferences.activities == "" %>
+		<% activities = Rails.application.config.sports_activities[@preferences.sport].dup %>
+		<% if activities == false %>
+			<% activities = "" %>
+		<% end %>
+	<% else %>
+		<% activities = activities_to_array(@preferences.activities) %>
+	<% end %>
+	<ul class="tagging_box">
+		<% activities.each do |activity| %><li class="tagging_item" style="background:<%= activity[1] %>"><%= activity[0] %></li><% end %><input type="text"></input>
+		<div class="add_tag"></div>
+	</ul>
+	<div class="tagging_item_mirror"></div>
+	<%= f.hidden_field :activities, :value => activities.to_s %>
+	</div>
+<% end %>
+</div>

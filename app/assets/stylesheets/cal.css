@@ -1,0 +1,504 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+#cal_container2{
+	float:right;
+
+}
+#calendar{
+	margin: 0 auto;
+	text-align: center;
+	width:100%;
+	/*min-width:960px;
+	max-width:1200px; */
+}
+
+
+#right_container{
+	position:relative;
+  padding-left: 25px;
+padding-right: 25px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+    display: flex;
+
+      transition: width .4s, left .4s;
+
+
+}
+
+#calendar_header{
+	width:100%;
+	text-align:left;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+#month_title {
+	width:50%;
+	float:right;
+	text-align:right;
+	font-family: Georgia;
+	font-variant:small-caps;
+	font-style:italic;
+	font-size:20px;
+	color:#3a3e40;
+}
+#name_title {
+	width:50%;
+	float:left;
+	text-align:left;
+	font-family: Georgia;
+	font-style:italic;
+	font-size:12px;
+	color:#3a3e40;
+}
+.float_left{
+	float:left;
+}
+
+.dayweek p{
+	display:block;
+	font-size:10px;
+	font-family:Georgia;
+	text-shadow:0 1px 0 #ffffff;
+	padding-right:2px;
+	color:#575757;
+	margin:0px;
+}
+.dayweek{
+	width:13%;
+	float:left;
+	text-align:right;
+	padding-bottom:5px;
+}
+.cal_title th{
+  font-weight:normal!important;
+
+  font-size:11px;
+  text-transform: capitalize;
+  color:rgb(178, 178, 178);
+}
+.cal_header{
+  margin-bottom:5px;
+}
+
+.cal_day{
+	width:13%;
+	float:left;
+	border-right:1px solid #e5e5e5;
+	min-height:75px;
+
+}
+.totals {
+	float:left;
+	font-size:10px;
+	text-shadow:0 1px 0 #ffffff;
+	color:#aaaaaa;
+	padding-left:10px;
+	width:auto;
+
+}
+.totals h2 {
+	font-size: 15px;
+	padding:0;
+	margin:0;
+	color:#17b010;
+}
+.totals h3 {
+	font-size: 15px;
+	padding:0;
+	margin:0;
+	color:#5DB7C5;
+}
+.monthly_totals h1 {
+	display:inline;
+	font-weight:bold;
+	font-size:40px;
+	color:#3a3e40;
+}
+.monthly_totals {
+	color:#3a3e40;
+	clear:both;
+	float:right;
+
+}
+.light {
+	font-size:10px;
+	text-shadow:0 1px 0 #ffffff;
+	color:#aaaaaa;
+	padding-left:3px;
+}
+.cal_week{
+	overflow:auto;
+	border-top:1px solid #c2c2c2;
+}
+.day_title {
+	float:right;
+	padding-top:1px;
+	padding-right:2px;
+	font-size:14px;
+
+
+}
+.day_title a {
+	color:black;
+	text-decoration:none;
+}
+.last_day_title {
+	float:right;
+	padding-top:1px;
+	padding-right:2px;
+	color:#aaaaaa;
+	font-size:14px;
+}
+.last_day_title a {
+	color:#aaaaaa;
+	text-decoration:none;
+}
+#daysmonth{
+	clear:both;
+}
+.cal_day ul {
+	list-style:none;
+	display:inline;
+}
+.cal_day .workouts {
+
+}
+.cal_day ul li {
+	color:white;
+	font-size:12px;
+	/*background-image:url('/images/layout/textured.gif');*/
+	/*background:#313131; */
+	background:#089deb;
+	border:1px solid #009ec3;
+	border-radius:5px;
+	padding-left:5px;
+	margin-right:5px;
+	padding-top:3px;
+	padding-bottom:3px;
+	margin-top:2px;
+
+}
+.cal_day ul li a {
+	color:white;
+	text-decoration:none;
+}
+
+.red_dot {
+	border-radius: 50%;
+	border:1px solid white;
+	background:#d86b7d;
+	width:9px;
+	height:9px;
+	float:left;
+	margin-top:2px;
+
+}
+.smaller {
+	font-size:.75em;
+}
+.highlighted {
+	background:#FFFEB0;
+}
+
+#select_box {
+	z-index:99999;
+
+	display:none;
+	padding:7px;
+	padding-right:2px;
+	color:white;
+	text-align:center;
+	background:#212226;
+
+
+
+}
+.dialog_link {
+	text-decoration:none;
+	color:black;
+  transition: color 1s;
+}
+.light_grey a{
+	color:#b1b1b1;
+}
+.dark a{
+	color:black;
+
+}
+.plan_light_grey a{
+	color:#9e9e9e;
+}
+.plan_dark a{
+	color:black;
+
+}
+#delete_button{
+	display:none;
+}
+#cancle_button{
+	display:none;
+}
+.add_workout_link{
+	font-size:13px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color:#828282;
+	-webkit-transition: all .3s;
+	-moz-transition: all 0.3s;
+	transition: all .3s;
+	opacity:0;
+}
+
+.grey_new_workout{
+	line-height:11px;
+
+	border-radius:7px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:1px;
+	padding-bottom:2px;
+
+	display:inline-block;
+}
+.date_today{
+	color:#278af0;
+}
+/*
+.future li{
+	background:#c8c8c8!important;
+}
+*/
+.today{
+	box-shadow:inset 0px 0px 15px 0px #f8f8f8;
+}
+.icon-stopwatch{
+
+	position:absolute;
+	top:3px;
+	margin-left:3px;
+}
+.intensity_true{
+	background:#fe6b7c!important;
+	border-color:#ff5a6d!important;
+}
+.athlete_name{
+	display:inline-block;
+	padding:10px;
+	padding-left:0px;
+	font-size:12px;
+	letter-spacing:.5px;
+	color:#808080;
+
+}
+.month_pull_down{
+	text-decoration:none;
+	color:black;
+	padding-left:5px;
+	padding-right:5px;
+}
+.date_list{
+	margin-top:16px;
+}
+.current_month{
+	background:#22dba5!important;
+}
+.current_month {
+	color:white!important;
+}
+.selected_month{
+	background:#e7e7e7!important;
+}
+.rekord{
+	font-family: rekord;
+}
+.arrow_rekord{
+	cursor:pointer;
+	font-weight:normal;
+	font-size:13px;
+	color:#999999;
+	vertical-align: middle;
+}
+.year_nav:hover{
+	background:#f4f4f4!important;
+	cursor:default;
+
+}
+.calendar_menu_link{
+	text-decoration:none;
+	color:black;
+}
+.number_totals{
+	display:inline-block;
+	vertical-align: middle;
+}
+.friend_hours{
+	right:20px;
+	position:absolute;
+	margin-top:10px;
+	font-size:20px;
+	line-height:20px;
+}
+.icon-ribbon-b{
+	font-size:20px;
+}
+.gold{
+	color:#ebcb19;
+}
+.silver{
+	color:#cbdcde;
+}
+.bronze{
+	color:#fc992e;
+}
+.blank_ribbon{
+	color:#595959;
+}
+.leader_board{
+	z-index:9999999999999;
+	position:absolute;
+	right:30px;
+	background:white;
+	top:-51px;
+	opacity:0;
+  visibility: hidden;
+	transition: visibility 0s, opacity 0.2s linear;
+
+}
+
+.leader_board table td{
+
+	border:0;
+	color:white;
+	padding:10px;
+}
+.leader_board table th{
+		padding:10px;
+}
+
+.leader_board table{
+	border-spacing: 0;
+	border-collapse:collapse;
+}
+.leader_board table tbody { max-height:200px; overflow-y:scroll; display:block; overflow-x: hidden;}
+.leader_board table thead { display:block;}
+.leader_board table thead tr { display:block; background:#e7e7e7; }
+
+.leader_board table thead th {
+	display:block;
+	width:100%;
+
+ }
+ .friend_hours_gradient{
+	 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2a8199+0,40d2e5+100 */
+	 background: #2a8199; /* Old browsers */
+	 background: -moz-linear-gradient(top,  #2a8199 0%, #40d2e5 100%); /* FF3.6-15 */
+	 background: -webkit-linear-gradient(top,  #2a8199 0%,#40d2e5 100%); /* Chrome10-25,Safari5.1-6 */
+	 background: linear-gradient(to bottom,  #2a8199 0%,#40d2e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a8199', endColorstr='#40d2e5',GradientType=0 ); /* IE6-9 */
+ 	background-size: 1000px 1000px;
+ }
+ .friend_hours_gradient_reverse{
+	 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#40d2e5+0,2a8199+100 */
+	 background: #40d2e5; /* Old browsers */
+	 background: -moz-linear-gradient(top,  #40d2e5 0%, #2a8199 100%); /* FF3.6-15 */
+	 background: -webkit-linear-gradient(top,  #40d2e5 0%,#2a8199 100%); /* Chrome10-25,Safari5.1-6 */
+	 background: linear-gradient(to bottom,  #40d2e5 0%,#2a8199 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40d2e5', endColorstr='#2a8199',GradientType=0 ); /* IE6-9 */
+ 	background-size: 1000px 1000px;
+ }
+ .leader_board_container{
+
+	 display: inline-block;
+	 vertical-align: middle;
+ }
+
+ .instructions_workout{
+	 position:absolute;
+	 left:7px;
+	 margin-top:1px;
+	 height: 7.5px;
+	 line-height: 15px;
+
+
+
+ }
+ .instructions_drop{
+	 opacity:0;
+	 visibility: hidden;
+	 position:absolute;
+
+	 left:-7px;
+	 -webkit-transition: opacity .2s ease-out;
+	 -moz-transition: opacity .2s ease-out;
+	 -ms-transition: opacity .2s ease-out;
+	 -o-transition: opacity .2s ease-out;
+	 transition: opacity .2s ease-out;
+	 z-index:9999999999999999999999999999999;
+
+ }
+ .instructions_body p {margin: 0}
+ .instructions_body{
+
+	 font-size:11px;
+	 border-radius:10px;
+   background: #e9e9e9;
+	 color:#8a8a8a;
+	 padding:10px;
+	 text-align:left;
+ }
+ .instructions_triangle{
+
+ 	width:0; /*set dimensions of DIV to 0 so its borders collapse and touch one
+ 	another*/
+ 	height:0;
+ 	border-color: transparent transparent #e9e9e9 transparent; /*top, right, bottom, and left border*/
+ 	border-style: solid;
+ 	border-width: 5px; /*width of each border*/
+ 	margin: 0 auto;
+
+ }
+ .instructions_body table{
+	 border-color:#a4e7d6!important;
+
+	 margin-top:5px;
+	 width:100%;
+	 border-spacing: 0px;
+	     border-collapse: separate;
+
+ }
+ .instructions_body th{
+	 	 border-color:#a4e7d6!important;
+		 color:#defcf5;
+		 text-transform:uppercase;
+		 font-size:9px;
+
+	 font-weight:normal;
+	 text-align:center!important;
+	 border-right:1px solid;
+	 margin:0;
+	 padding:5px!important;
+ }
+ .instructions_body th:last-child,  .instructions_body td:last-child,  .no_right_border {
+	 border-right:0px;
+ }
+
+ .instructions_body td{
+	 border-color:#a4e7d6!important;
+	 text-align:center!important;
+	 padding:5px!important;
+ }
+ .hover_coach_name{
+   font-weight: bold;
+   color:#494949;
+
+ }
+ .hover_body{
+	 font-size:11px;
+ }

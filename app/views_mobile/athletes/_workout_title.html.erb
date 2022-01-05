@@ -1,0 +1,12 @@
+			<% entry.workouts.each do |workout| %>
+			<% if workout.activity_id == nil %>
+			<% workout.activity_id = "run" %>
+			<% end %>
+			<div class="workout_m" id="workout_<%= workout.id.to_s %>">
+				<%= link_to(raw("<div class='icon-cancel'></div>"), 'log_entries/delete_workout/'+workout.id.to_s+'/2017-06-01', :remote => true, :class => "delete_workout_link_m", :id => "delete_workout_"+workout.id.to_s, method: :delete, data: {confirm: "Delete Workout?"}) %>
+				<%= link_to( 'log_entries/'+workout.log_entry_id.to_s+'/edit/'+workout.id.to_s+"/2017-06-01", :remote => true, :class => "variable_link edit_workout_mobile", :id => "edit_workout_"+workout.id.to_s, :data => {:date => entry.date.to_s})  do %>
+				<%= workout.activity_id+" "+time_cleanup(workout.total_completed()/60) %> <%= workout.total_planned != 0 ? ("<span class='slash_hours_m'> / </span><span class='planned_time_total_m'>" +time_cleanup(workout.total_planned/60)+"</span>").html_safe : "" %><% end %>
+
+
+			</div>
+			<% end %>
